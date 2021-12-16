@@ -1,0 +1,30 @@
+.registration {
+  max-width: 420px;
+}
+
+.registration__title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 45px;
+}
+
+.registration__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.registration__input {
+  input {
+    max-width: 420px;
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+.registration__input__desc {
+  display: flex;
+}
+
+.registration__input__button {
+  display: flex;
+}

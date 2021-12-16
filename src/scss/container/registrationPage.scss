@@ -1,0 +1,40 @@
+.RegistrationPage {
+  display: flex;
+  justify-content: space-between;
+}
+
+.registrationPage__background {
+  width: 635px;
+  height: 90vh;
+  position: relative;
+  padding: 100px;
+}
+
+.registrationPage__background__imageBackgroundStart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 400px;
+  min-height: 219px;
+}
+
+.registrationPage__background__imageBackgroundEnd {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.registrationPage__background__image {
+  position: absolute;
+  top: 190px;
+  right: 25px;
+}
+
+.registrationComponent {
+  width: 1000px;
+  height: 90vh;
+}
+
+.registrationComponent {
+  margin-top: 50px;
+}
