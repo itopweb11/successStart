@@ -1,5 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin-bottom: 0!important;
+}
+
 .registration {
   max-width: 420px;
+  margin-top: 50px;
 }
 
 .registration__title {
@@ -11,14 +22,74 @@
 .registration__buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
+
+  button {
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    border-radius: 8px;
+    min-width: 205px;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid rgb(95, 99, 242);
+    color: rgb(95, 99, 242);
+  }
+
+  button:hover {
+    box-shadow: 0px 0px 3px 1px #4545cc;
+  }
+}
+
+
+.registration__button-active {
+  color: #fff!important;
+  background: rgb(95, 99, 242)!important;
+  border-color: #4545cc!important;
+}
+
+.registration__inputs {
+  margin-top: 25px;
 }
 
 .registration__input {
+  margin-top: 20px;
+
   input {
     max-width: 420px;
     width: 100%;
     min-height: 48px;
+    border-radius: 4px;
+    margin-left: -24px;
+    padding-left: 30px;
+    color: rgb(90, 95, 125);
+    border: 1px solid #e3e6ef;
+    outline: none;
   }
+
+  input:hover {
+    border-color: #8c94ff;
+  }
+
+  input:focus {
+    border-color: #8c94ff!important;
+    box-shadow: 0 0 0 2px #5F63F233!important;
+  }
+
+  span {
+    color: red;
+    margin-right: 4px;
+  }
+
+  p {
+    color: rgba(0,0,0,.85);
+    font-size: 14px;
+    height: auto;
+  }
+}
+
+.registration__inputNone {
+  display: none;
 }
 
 .registration__input__desc {
@@ -27,4 +98,164 @@
 
 .registration__input__button {
   display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.registration__input__image {
+  z-index: 1;
+  margin-left: 10px;
+}
+
+.registration__buttonConfirm {
+  margin-left: -126px;
+  cursor: default!important;
+  width: 120px;
+  height: 38px;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  background: rgba(95,99,242,.3764705882352941);
+  color: white;
+}
+
+.registration__buttonConfirmActive {
+  cursor: pointer!important;
+  background: #5f63f2;
+}
+
+.registration__passwordDesign {
+  margin-left: -30px;
+  cursor: pointer;
+}
+
+.registration__passwordDesignActive {
+  margin-left: -50px;
+  cursor: pointer;
+}
+
+.registration__passwordReady {
+  margin-left: 6px;
+}
+
+.registration__passwordReadyNone {
+  display: none;
+}
+
+.registerBlockInfo__listConditions {
+  height: 46px;
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+
+  div {
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.registerBlockInfo__listConditionsFirst-child {
+  margin-right: 25px;
+}
+
+.registerBlockInfo__listConditions-item {
+  margin-top: 12px;
+}
+
+.point {
+  width: 8.5px;
+  height: 8.5px;
+  border-radius: 50%;
+  background-color: #8797B6;
+  margin-top: 2px;
+}
+
+.point-active {
+  width: 8.5px;
+  height: 8.5px;
+  border-radius: 50%;
+  background-color: #040bff;
+  margin-top: 2px;
+}
+
+.pointText {
+  font-size: 12px;
+  line-height: 14px;
+  color: #8797B6;
+  margin-left: 8px;
+}
+
+.pointText-active {
+  color: #3a40ff;
+  font-size: 12px;
+  line-height: 14px;
+  margin-left: 8px;
+}
+
+.registration__listConditions__button__desc {
+  display: flex;
+  font-size: 12px;
+  line-height: 18px;
+  color: #8797B6;
+  cursor: pointer;
+  margin-top: 30px;
+
+  input {
+    display: none;
+  }
+}
+
+.registration__listConditions__button__desc img {
+  display: none;
+}
+
+.registration__listConditions__button__desc input:checked + span img {
+  display: block;
+}
+
+.registration__listConditions__button__desc__activeText {
+  color: #5f63f2;
+  text-decoration-line: underline;
+}
+
+.registration__listConditions__button__desc__input {
+  width: 17px;
+  height: 17px;
+  border: 1px solid #5f63f2;
+  border-radius: 3px;
+  margin-right: 5px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.descInputActive {
+  background-color: #040bff;
+}
+
+.registration__buttonContinue {
+  cursor: default!important;
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: 500;
+  height: 48px;
+  border-radius: 8px;
+  min-width: 205px;
+  color: #fff;
+  background: rgba(95,99,242,.3764705882352941);
+  border: none;
+}
+
+.registration__buttonContinueActive {
+  cursor: pointer!important;
+  background-color: #5f63f2!important;
+
+  &:hover {
+    background: #5776f5 !important;
+  }
 }

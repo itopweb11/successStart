@@ -1,0 +1,13 @@
+button.btn {
+
+  &-secondary {
+
+    &:focus {
+      background-color: #5f63f2;
+    }
+
+    &:hover {
+      background: #6f75ff;
+    }
+  }
+}

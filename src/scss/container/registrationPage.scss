@@ -5,9 +5,10 @@
 
 .registrationPage__background {
   width: 635px;
-  height: 90vh;
+  height: 100vh;
   position: relative;
   padding: 100px;
+  background-color: #ffecf4;
 }
 
 .registrationPage__background__imageBackgroundStart {
@@ -33,8 +34,43 @@
 .registrationComponent {
   width: 1000px;
   height: 90vh;
+  margin-top: 30px;
 }
 
 .registrationComponent {
   margin-top: 50px;
+}
+
+.registrationHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.registrationHeader__switch {
+  display: flex;
+  margin-right: 40px;
+
+  p {
+    font-weight: 500;
+    color: rgb(90, 95, 125);
+    margin-right: 15px;
+  }
+
+  a {
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.registrationHeader__items {
+  a {
+    font-weight: 500;
+    color: rgb(90, 95, 125);
+    text-decoration: none;
+    margin-right: 60px;
+  }
 }

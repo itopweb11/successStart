@@ -1,4 +1,4 @@
-import './App.css';
+import '../src/scss/app.scss';
 import RegistrationPage from "./containers/registrationPage/registrationPage";
 
 function App() {

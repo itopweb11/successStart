@@ -14,6 +14,18 @@ const RegistrationPage = () => {
                 <img className='registrationPage__background__imageBackgroundEnd' src={imageBackgroundEnd} alt="img2"/>
             </div>
             <div className='registrationComponent'>
+                <div className='registrationHeader'>
+                    <div className='registrationHeader__items'>
+                        <a href="#">Привлечь инвестиции</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Новости</a>
+                        <a href="#">Контакты</a>
+                    </div>
+                    <div className='registrationHeader__switch'>
+                        <p>У вас уже есть аккаунт?</p>
+                        <a href="#">Вход</a>
+                    </div>
+                </div>
                 <Registration />
             </div>
         </div>
