@@ -1,5 +1,4 @@
 import React  from 'react';
-import RegistrationPages from '../../scss/container/registrationPage.scss'
 import image from '../../shared/img/containersImg/Illustration.png'
 import imageBackgroundStart from '../../shared/img/containersImg/background11.png'
 import imageBackgroundEnd from '../../shared/img/containersImg/background22.png'
