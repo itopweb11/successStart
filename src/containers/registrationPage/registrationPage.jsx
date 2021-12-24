@@ -1,10 +1,13 @@
-import React  from 'react';
+import React, {useState} from 'react';
 import image from '../../shared/img/containersImg/Illustration.png'
 import imageBackgroundStart from '../../shared/img/containersImg/background11.png'
 import imageBackgroundEnd from '../../shared/img/containersImg/background22.png'
 import Registration from "../../shared/components/registration/registration";
+import RegistrationFormSecond from "../../shared/components/registration/registrationFormSecond/registrationFormSecond";
 
 const RegistrationPage = () => {
+    const [registration , setRegistration] = useState(true)
+
     return(
         <div className='RegistrationPage'>
             <div className='registrationPage__background'>
@@ -25,7 +28,12 @@ const RegistrationPage = () => {
                         <a href="#">Вход</a>
                     </div>
                 </div>
-                <Registration />
+                {
+                    registration
+                        ? <Registration setRegistration={setRegistration}/>
+                        : <RegistrationFormSecond />
+                }
+
             </div>
         </div>
     )

@@ -3,7 +3,10 @@ export const people = {
     mail: '',
     password: '',
     agreement: false,
-    confirmationCode: ''
+    confirmationCode: '',
+    user: '',
+    phone: '',
+    FullName: ''
 }
 
  export const reducer = (state, action) => {

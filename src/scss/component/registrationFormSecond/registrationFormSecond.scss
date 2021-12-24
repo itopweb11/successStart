@@ -1,0 +1,50 @@
+.registrationForm {
+  margin-top: 50px;
+  max-width: 420px;
+}
+
+.registrationForm__buttons {
+  button {
+    max-width: 130px;
+    min-height: 48px;
+  }
+}
+
+.registrationForm__input {
+  p {
+    color: rgba(0,0,0,.85);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  div {
+    margin-top: 10px;
+
+    input {
+      margin-left: -14px;
+    }
+
+    svg {
+      position: relative;
+      left: 10px;
+    }
+  }
+}
+
+.registrationFormLabel {
+  display: flex;
+  justify-content: end;
+}
+
+.registrationFormLabel__desc {
+  margin-right: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0,0,0,.85);
+  margin-top: 2px;
+}
+
+.registrationFormLabel__input {
+  width: 16px;
+  height: 16px;
+}

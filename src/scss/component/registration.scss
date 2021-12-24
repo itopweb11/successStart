@@ -29,7 +29,8 @@ p {
     font-weight: 500;
     height: 48px;
     border-radius: 8px;
-    min-width: 205px;
+    max-width: 205px;
+    width: 100%;
     text-transform: uppercase;
     background: transparent;
     border: 1px solid rgb(95, 99, 242);
@@ -86,6 +87,21 @@ p {
     color: rgba(0,0,0,.85);
     font-size: 14px;
     height: auto;
+  }
+}
+
+.registration__inputConfirm {
+  animation-duration: 1.5s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
@@ -149,6 +165,10 @@ input::-webkit-inner-spin-button {
   margin-left: 6px;
 }
 
+.codeConfirm {
+  margin-left: -30px;
+}
+
 .registration__passwordReadyNone {
   display: none;
 }
@@ -210,7 +230,7 @@ input::-webkit-inner-spin-button {
 }
 
 
-.registration__listConditions__button__desc {
+.registrationLabel {
   display: flex;
   font-size: 12px;
   line-height: 18px;
@@ -236,7 +256,7 @@ input::-webkit-inner-spin-button {
   text-decoration-line: underline;
 }
 
-.registration__listConditions__button__desc__input {
+.registrationLabelImg {
   width: 17px;
   height: 17px;
   border: 1px solid #5f63f2;

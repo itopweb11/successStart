@@ -2,6 +2,7 @@ import React, {useReducer, useState} from 'react';
 import axios from "axios";
 import classnames from 'classnames';
 import vector from "../../../shared/img/components/registration/Vector.png";
+import vector222 from "../../img/components/registration/Vector222.png";
 import {
     people, reducer, iconPassword, buttonContinueDisabled, buttonContinueClassName, confirmEmailBtn
 } from "../../../containers/registrationPage/helper";
@@ -16,20 +17,16 @@ import EmailIcon from "../../img/svg/EmailIcon";
 import LockIcon from "../../img/svg/LockIcon";
 import PasswordControls from "./PasswordControls";
 
-const Registration = () => {
+const Registration = ({setRegistration}) => {
     const [state, dispatch] = useReducer(reducer, people);
     const [confirm , setConfirm] = useState(false)
+    const [codeConfirm , setCodeConfirm] = useState(true)
     const [inputConfirm , setInputConfirm] = useState(false)
     const [passwordImage , setPasswordImage] = useState(false)
 
     const confirmBtnClass = classnames({
         'registration__buttonConfirm': true,
         'registration__buttonConfirmActive': emailRegex.test(state.mail) && !confirm
-    })
-
-    const emailCodeClass = classnames({
-        'registration__inputNone': true,
-        'registration__input': confirm
     })
 
     const handleOnChange = e => {
@@ -49,6 +46,20 @@ const Registration = () => {
         })
             .then(function (response) {
                 setConfirm(true)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    const handleConfirmCode = () => {
+        axios.post("https://api.investonline.su/api/v1/confirmations/check/email", {
+            email: state.mail,
+            code: state.confirmationCode,
+            type: 'register_request'
+        })
+            .then(function (response) {
+                setCodeConfirm(false)
             })
             .catch(function (error) {
                 console.log(error);
@@ -109,7 +120,9 @@ const Registration = () => {
                             ? <div className="spinner-border text-primary registration__input__spinner" role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </div>
-                            : <button
+                            : confirm && !codeConfirm
+                                ? <span className='codeConfirm'><img className="registration__passwordReady" src={vector222} alt="check" /></span>
+                                : <button
                                 disabled={!emailRegex.test(state.mail) && !confirm}
                                 onClick={handleConfirmEmail}
                                 className={confirmBtnClass}
@@ -119,24 +132,29 @@ const Registration = () => {
                         }
                     </div>
                 </div>
-                <div className={emailCodeClass}>
-                    <p>
-                        <span className='inputDEsc'>*</span>
-                        Код подтверждения
-                    </p>
-                    <div className='registration__input__button'>
-                        <div className='registration__input__image'>
-                            <LockIcon />
+                {
+                    confirm && codeConfirm
+                        ? <div className='registration__input registration__inputConfirm'>
+                            <p>
+                                <span className='inputDEsc'>*</span>
+                                Код подтверждения
+                            </p>
+                            <div className='registration__input__button'>
+                                <div className='registration__input__image'>
+                                    <LockIcon />
+                                </div>
+                                <input
+                                    placeholder='Код подтверждения'
+                                    type="number"
+                                    name='confirmationCode'
+                                    value={state.confirmationCode}
+                                    onChange={handleOnChangeEmailCode}
+                                />
+                                {state.confirmationCode.length == 4 ? (handleConfirmCode()) : null}
+                            </div>
                         </div>
-                        <input
-                            placeholder='Код подтверждения'
-                            type="number"
-                            name='confirmationCode'
-                            value={state.confirmationCode}
-                            onChange={handleOnChangeEmailCode}
-                        />
-                    </div>
-                </div>
+                        : null
+                }
                 <div className='registration__input'>
                     <p>
                         <span className='inputDEsc'>*</span>
@@ -190,7 +208,7 @@ const Registration = () => {
                 </div>
                 <div>
                     <label
-                        className='registration__listConditions__button__desc'
+                        className='registrationLabel'
                         htmlFor="agreement"
                     >
                         <input
@@ -206,7 +224,7 @@ const Registration = () => {
                             })}
                         />
                         <span className={classnames({
-                            'registration__listConditions__button__desc__input': true,
+                            'registrationLabelImg': true,
                             'descInputActive': state.agreement
                         })}>
                             <img src={vector} alt="vector"/>
@@ -218,8 +236,9 @@ const Registration = () => {
                     </label>
                 </div>
                 <button
-                    disabled={!(emailRegex.test(state.mail) && registerPassRegex.test(state.password) && state.agreement && state.userType)}
+                    disabled={!(emailRegex.test(state.mail) && confirm && !codeConfirm && registerPassRegex.test(state.password) && state.agreement && state.userType)}
                     className="registration__buttonContinue"
+                    onClick={() => setRegistration(false)}
                 >
                     Продолжить
                 </button>
