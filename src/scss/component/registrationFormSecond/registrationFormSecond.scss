@@ -48,3 +48,12 @@
   width: 16px;
   height: 16px;
 }
+
+.registrationFormSpinner {
+  position: relative;
+  top: 8px;
+}
+
+.registrationForm__inputActive {
+  border-color: red!important;
+}

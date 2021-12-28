@@ -6,7 +6,7 @@ import Registration from "../../shared/components/registration/registration";
 import RegistrationFormSecond from "../../shared/components/registration/registrationFormSecond/registrationFormSecond";
 
 const RegistrationPage = () => {
-    const [registration , setRegistration] = useState(true)
+    const [registration , setRegistration] = useState(false)
 
     return(
         <div className='RegistrationPage'>

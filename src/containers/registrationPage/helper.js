@@ -6,7 +6,8 @@ export const people = {
     confirmationCode: '',
     user: '',
     phone: '',
-    FullName: ''
+    phoneCode: '',
+    fullName: ''
 }
 
  export const reducer = (state, action) => {
