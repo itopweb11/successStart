@@ -8,19 +8,30 @@ import {people, reducer} from "../../../../containers/registrationPage/helper";
 import InputMask from "react-input-mask";
 import axios from "axios";
 import vector222 from "../../../img/components/registration/Vector222.png";
-import {emailRegex, phoneRegex} from "../../../../utils/regex";
+import {emailRegex, phoneRegex, registerPassRegex} from "../../../../utils/regex";
 
 const RegistrationFormSecond = () => {
     const [state, dispatch] = useReducer(reducer, people);
     const [phone, setPhone] = useState(false);
-    const [nameRegex, setNameRegex] = useState(false);
+    const [user, setUser] = useState(false);
     const [inputConfirm , setInputConfirm] = useState(false)
     const [phoneCode, setPhoneCode] = useState(true);
+    //const fullNameRegex = /^[А-Яа-яЁё]*\ [А-Яа-яЁё]*\ [А-Яа-яЁё]*$/
     const confirmBtnClass = classnames({
         'registration__buttonConfirm': true,
         'registration__buttonConfirmActive': state.phone.match(phoneRegex) && !phone
     })
-    const fullNameRegex = /^[А-Яа-яЁё]*\ [А-Яа-яЁё]*\ [А-Яа-яЁё]*$/
+    const userBtn = classnames({
+        'registration__buttons registrationForm__buttons': true,
+        'registration__button-noActive': user && !state.user
+    })
+
+    const wordCount = (string) => {
+        const str = string.match(/[^\s]+/g)
+        return str ? str.length : 0;
+    }
+    const strLength = wordCount(state.fullName)
+    const wordCountLength = state.noMiddleName ? 2 : 3
 
     const handleOnChange = e => {
         dispatch({
@@ -80,11 +91,10 @@ const RegistrationFormSecond = () => {
             });
     }
 
-    console.log(state.fullName)
     return(
         <div className='registrationForm'>
             <p className='registration__title'>Регистрация</p>
-            <div className='registration__buttons registrationForm__buttons'>
+            <div className={userBtn}>
                 <button
                     className={classnames({'registration__button-active': state.user === 'physicalPerson'})}
                     name='user'
@@ -119,6 +129,7 @@ const RegistrationFormSecond = () => {
                         name='phone'
                         onChange={handleOnChange}
                         placeholder='+7(999)969 34-02'
+                        onClick={()=> setUser(true)}
                     />
                     {
                         inputConfirm && !phone
@@ -131,13 +142,12 @@ const RegistrationFormSecond = () => {
                             </span>
                         : <button
                         onClick={handleConfirmPhone}
-                        disabled={phone}
+                        disabled={!state.phone && !phone}
                         className={confirmBtnClass}
                         >
                         Подтвердить
                         </button>
                     }
-
                 </div>
             </div>
             {
@@ -163,32 +173,52 @@ const RegistrationFormSecond = () => {
                 <div>
                     <User />
                     <input
-                        className={nameRegex ? 'registrationForm__inputActive' : null}
+                        className={strLength > 4 ? 'fullName-input' : null}
                         name="fullName"
                         value={state.fullName}
                         onChange={handleOnChangeFullName}
                         type="text"
                         placeholder='Иванов Иван Иванович'
                     />
+                    {
+                        strLength > 4
+                        ? <p className='fullName-input__desc'>максимум 4 слова</p>
+                            : null
+                    }
                 </div>
             </div>
             <div className='registrationFormLabel'>
                 <label
                     className='registrationLabel'
-                    htmlFor="agreement"
+                    htmlFor="noMiddleName"
                 >
                     <span className='registrationFormLabel__desc'>Нет отчества</span>
                     <input
                         type="checkbox"
-                        id="agreement"
-                        name="agreement"
+                        id="noMiddleName"
+                        name="noMiddleName"
+                        checked={state.noMiddleName}
+                        onChange={event => handleOnChange({
+                            target: {
+                                name: 'noMiddleName',
+                                value: event.target.checked
+                            }
+                        })}
                     />
-                    <span className='registrationFormLabel__input registrationLabelImg'>
+                    <span className={classnames({
+                        'registrationLabelImg': true,
+                        'descInputActive': state.noMiddleName
+                    })}>
                             <img src={vector} alt="vector"/>
-                    </span>
+                        </span>
                 </label>
             </div>
-            <button className='registration__buttonContinue'>Создать аккаунт</button>
+            <button
+                disabled={!(phoneRegex.test(state.phone) && state.user && state.phoneCode && strLength >= wordCountLength)}
+                className='registration__buttonContinue'
+            >
+                Создать аккаунт
+            </button>
         </div>
         )
 }

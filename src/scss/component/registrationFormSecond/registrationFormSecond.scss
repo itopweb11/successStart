@@ -54,6 +54,22 @@
   top: 8px;
 }
 
-.registrationForm__inputActive {
+.registration__button-noActive {
+  button {
+    border-color: red!important;
+  }
+}
+
+.fullName-input {
   border-color: red!important;
+
+  &:focus {
+    border-color: red!important;
+    box-shadow: 0 0 0 2px rgba(250, 2, 22, 0.2) !important;
+  }
+}
+
+.fullName-input__desc {
+  font-weight: 100!important;
+  color: red!important;
 }

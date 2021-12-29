@@ -3,6 +3,7 @@ export const people = {
     mail: '',
     password: '',
     agreement: false,
+    noMiddleName: false,
     confirmationCode: '',
     user: '',
     phone: '',
