@@ -13,17 +13,16 @@ import {emailRegex, phoneRegex, registerPassRegex} from "../../../../utils/regex
 const RegistrationFormSecond = () => {
     const [state, dispatch] = useReducer(reducer, people);
     const [phone, setPhone] = useState(false);
-    const [user, setUser] = useState(false);
+    const [activeElem , setActiveElem] = useState(false)
     const [inputConfirm , setInputConfirm] = useState(false)
     const [phoneCode, setPhoneCode] = useState(true);
-    //const fullNameRegex = /^[А-Яа-яЁё]*\ [А-Яа-яЁё]*\ [А-Яа-яЁё]*$/
     const confirmBtnClass = classnames({
         'registration__buttonConfirm': true,
         'registration__buttonConfirmActive': state.phone.match(phoneRegex) && !phone
     })
     const userBtn = classnames({
         'registration__buttons registrationForm__buttons': true,
-        'registration__button-noActive': user && !state.user
+        'registration__button-noActive': activeElem && !state.user
     })
 
     const wordCount = (string) => {
@@ -125,11 +124,12 @@ const RegistrationFormSecond = () => {
                 <div>
                     <Phone />
                     <InputMask
+                        className={!state.phone && activeElem ? 'fullName-input' : null}
                         mask="+7(999)999-99-99"
                         name='phone'
                         onChange={handleOnChange}
                         placeholder='+7(999)969 34-02'
-                        onClick={()=> setUser(true)}
+                        onClick={()=> setActiveElem(true)}
                     />
                     {
                         inputConfirm && !phone
@@ -173,12 +173,14 @@ const RegistrationFormSecond = () => {
                 <div>
                     <User />
                     <input
-                        className={strLength > 4 ? 'fullName-input' : null}
+                        className={strLength > 4 || !state.fullName && activeElem && state.noMiddleName ? 'fullName-input' : null}
                         name="fullName"
                         value={state.fullName}
                         onChange={handleOnChangeFullName}
                         type="text"
                         placeholder='Иванов Иван Иванович'
+                        onClick={()=> setActiveElem(true)}
+                        autoComplete="off"
                     />
                     {
                         strLength > 4
@@ -191,6 +193,7 @@ const RegistrationFormSecond = () => {
                 <label
                     className='registrationLabel'
                     htmlFor="noMiddleName"
+                    onClick={()=> setActiveElem(true)}
                 >
                     <span className='registrationFormLabel__desc'>Нет отчества</span>
                     <input

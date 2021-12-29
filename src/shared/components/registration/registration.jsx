@@ -23,10 +23,16 @@ const Registration = ({setRegistration}) => {
     const [codeConfirm , setCodeConfirm] = useState(true)
     const [inputConfirm , setInputConfirm] = useState(false)
     const [passwordImage , setPasswordImage] = useState(false)
+    const [activeElem , setActiveElem] = useState(false)
+    const [activeElemMail , setActiveElemMail] = useState(false)
 
     const confirmBtnClass = classnames({
         'registration__buttonConfirm': true,
         'registration__buttonConfirmActive': emailRegex.test(state.mail) && !confirm
+    })
+    const userBtn = classnames({
+        'registration__buttons': true,
+        'registration__button-noActive': activeElem && !state.userType || state.agreement
     })
 
     const handleOnChange = e => {
@@ -80,7 +86,7 @@ const Registration = ({setRegistration}) => {
     return(
         <div className='registration'>
             <p className='registration__title'>Регистрация</p>
-            <div className='registration__buttons'>
+            <div className={userBtn}>
                 <button
                     className={classnames({'registration__button-active': state.userType === 'investor'})}
                     name='userType'
@@ -109,12 +115,14 @@ const Registration = ({setRegistration}) => {
                             <EmailIcon />
                         </div>
                         <input
+                            className={!state.mail && activeElemMail || state.agreement ? 'fullName-input' : null}
                             onChange={handleOnChange}
                             value={state.mail}
                             placeholder='exaple@gmail.com'
                             name='mail'
                             type="text"
                             autoComplete="off"
+                            onClick={() => setActiveElem(true)}
                         />
                         {inputConfirm && !confirm
                             ? <div className="spinner-border text-primary registration__input__spinner" role="status">
@@ -165,11 +173,16 @@ const Registration = ({setRegistration}) => {
                             <LockIcon />
                         </div>
                         <input
+                            className={!state.password && state.agreement ? 'fullName-input' : null}
                             onChange={handleOnChange}
                             value={state.password}
                             placeholder='Пароль'
                             name='password'
                             type={passwordImage ? "text" : "password"}
+                            onClick={() => {
+                                setActiveElem(true)
+                                setActiveElemMail(true)
+                            }}
                         />
                         <PasswordControls
                             passwordImage={passwordImage}

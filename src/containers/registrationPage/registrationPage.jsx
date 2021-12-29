@@ -4,9 +4,11 @@ import imageBackgroundStart from '../../shared/img/containersImg/background11.pn
 import imageBackgroundEnd from '../../shared/img/containersImg/background22.png'
 import Registration from "../../shared/components/registration/registration";
 import RegistrationFormSecond from "../../shared/components/registration/registrationFormSecond/registrationFormSecond";
+import Entrance from "../../shared/components/registration/entrance/entrance";
 
 const RegistrationPage = () => {
     const [registration , setRegistration] = useState(true)
+    const [entrance , setEntrance] = useState(true)
 
     return(
         <div className='RegistrationPage'>
@@ -23,15 +25,24 @@ const RegistrationPage = () => {
                         <a href="#">Новости</a>
                         <a href="#">Контакты</a>
                     </div>
-                    <div className='registrationHeader__switch'>
-                        <p>У вас уже есть аккаунт?</p>
-                        <a href="#">Вход</a>
-                    </div>
+                    {
+                        entrance
+                        ?<div className='registrationHeader__switch'>
+                                <p>У вас уже есть аккаунт?</p>
+                                <a onClick={() => setEntrance(false)} href="#">Вход</a>
+                            </div>
+                            :<div className='registrationHeader__switch'>
+                                <p>Впервые на платформе?</p>
+                                <a onClick={() => setEntrance(true)} href="#">Зарегистрироватся</a>
+                            </div>
+                    }
                 </div>
                 {
-                    registration
+                    entrance
+                    ? registration
                         ? <Registration setRegistration={setRegistration}/>
                         : <RegistrationFormSecond />
+                        : <Entrance />
                 }
 
             </div>
