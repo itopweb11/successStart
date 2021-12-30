@@ -2,17 +2,19 @@ import React, {useState} from 'react';
 import image from '../../shared/img/containersImg/Illustration.png'
 import imageBackgroundStart from '../../shared/img/containersImg/background11.png'
 import imageBackgroundEnd from '../../shared/img/containersImg/background22.png'
+import investImg0 from '../../shared/img/containersImg/investmently0.png'
 import Registration from "../../shared/components/registration/registration";
 import RegistrationFormSecond from "../../shared/components/registration/registrationFormSecond/registrationFormSecond";
 import Entrance from "../../shared/components/registration/entrance/entrance";
 
-const RegistrationPage = () => {
+const RegistrationPage = ({setCreateAnAccount, dispatch, state}) => {
     const [registration , setRegistration] = useState(true)
     const [entrance , setEntrance] = useState(true)
 
     return(
         <div className='RegistrationPage'>
             <div className='registrationPage__background'>
+                <img className='registrationPage__background__logo' src={investImg0} alt="invest"/>
                 <img className='registrationPage__background__imageBackgroundStart' src={imageBackgroundStart} alt="img2"/>
                 <img className='registrationPage__background__image' src={image} alt="img1"/>
                 <img className='registrationPage__background__imageBackgroundEnd' src={imageBackgroundEnd} alt="img2"/>
@@ -40,8 +42,16 @@ const RegistrationPage = () => {
                 {
                     entrance
                     ? registration
-                        ? <Registration setRegistration={setRegistration}/>
-                        : <RegistrationFormSecond />
+                        ? <Registration
+                                dispatch={dispatch}
+                                state={state}
+                                setRegistration={setRegistration}
+                            />
+                        : <RegistrationFormSecond
+                                dispatch={dispatch}
+                                state={state}
+                                setCreateAnAccount={setCreateAnAccount}
+                            />
                         : <Entrance />
                 }
 

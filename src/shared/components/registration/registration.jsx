@@ -17,8 +17,7 @@ import EmailIcon from "../../img/svg/EmailIcon";
 import LockIcon from "../../img/svg/LockIcon";
 import PasswordControls from "./PasswordControls";
 
-const Registration = ({setRegistration}) => {
-    const [state, dispatch] = useReducer(reducer, people);
+const Registration = ({setRegistration, dispatch, state}) => {
     const [confirm , setConfirm] = useState(false)
     const [codeConfirm , setCodeConfirm] = useState(true)
     const [inputConfirm , setInputConfirm] = useState(false)
@@ -32,7 +31,7 @@ const Registration = ({setRegistration}) => {
     })
     const userBtn = classnames({
         'registration__buttons': true,
-        'registration__button-noActive': activeElem && !state.userType || state.agreement
+        'registration__button-noActive': activeElem && !state.userType || state.agreement && !state.userType
     })
 
     const handleOnChange = e => {
@@ -115,7 +114,7 @@ const Registration = ({setRegistration}) => {
                             <EmailIcon />
                         </div>
                         <input
-                            className={!state.mail && activeElemMail || state.agreement ? 'fullName-input' : null}
+                            className={!state.mail && activeElemMail || state.agreement && !state.mail ? 'fullName-input' : null}
                             onChange={handleOnChange}
                             value={state.mail}
                             placeholder='exaple@gmail.com'

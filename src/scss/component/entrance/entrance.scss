@@ -1,0 +1,10 @@
+.forgotYourPassword {
+  text-align: end;
+  color: #040bff!important;
+  cursor: pointer;
+  margin-top: 10px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

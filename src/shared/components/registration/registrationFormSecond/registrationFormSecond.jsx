@@ -4,14 +4,12 @@ import User from "../../../img/svg/user";
 import LockIcon from "../../../img/svg/LockIcon";
 import classnames from "classnames";
 import vector from "../../../img/components/registration/Vector.png";
-import {people, reducer} from "../../../../containers/registrationPage/helper";
 import InputMask from "react-input-mask";
 import axios from "axios";
 import vector222 from "../../../img/components/registration/Vector222.png";
 import {emailRegex, phoneRegex, registerPassRegex} from "../../../../utils/regex";
 
-const RegistrationFormSecond = () => {
-    const [state, dispatch] = useReducer(reducer, people);
+const RegistrationFormSecond = ({setCreateAnAccount, dispatch, state}) => {
     const [phone, setPhone] = useState(false);
     const [activeElem , setActiveElem] = useState(false)
     const [inputConfirm , setInputConfirm] = useState(false)
@@ -219,6 +217,7 @@ const RegistrationFormSecond = () => {
             <button
                 disabled={!(phoneRegex.test(state.phone) && state.user && state.phoneCode && strLength >= wordCountLength)}
                 className='registration__buttonContinue'
+                onClick={() => setCreateAnAccount(false)}
             >
                 Создать аккаунт
             </button>
