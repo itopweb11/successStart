@@ -3,26 +3,20 @@ import RegistrationPage from "./containers/registrationPage/registrationPage";
 import {useReducer, useState} from "react";
 import ProfilePage from "./containers/profilePage/profilePage";
 import {people, reducer} from "./containers/registrationPage/helper";
+import {BrowserRouter, Routes, Route,} from "react-router-dom";
 
 function App() {
-    const [createAnAccount , setCreateAnAccount] = useState(false)
     const [state, dispatch] = useReducer(reducer, people);
 
   return (
-    <div className="App">
-        {
-            createAnAccount
-            ?<RegistrationPage
-                    state={state}
-                    dispatch={dispatch}
-                    setCreateAnAccount={setCreateAnAccount}
-                />
-                :<ProfilePage
-                    state={state}
-                    dispatch={dispatch}
-                />
-        }
-    </div>
+      <div className="App">
+          <BrowserRouter>
+              <Routes>
+                  <Route exact path="/" element={<RegistrationPage state={state} dispatch={dispatch}/>} />
+                  <Route exact path="/profilePage" element={ <ProfilePage state={state} dispatch={dispatch}/>} />
+              </Routes>
+          </BrowserRouter>
+      </div>
   );
 }
 

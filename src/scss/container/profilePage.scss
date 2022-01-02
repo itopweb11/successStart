@@ -11,13 +11,14 @@ li {
   max-width: 100%;
   min-height: 100vh;
   background-color: #edf1f4;
+  display: flex;
 }
 
 .profile__navbar {
   max-width: 18%;
   min-height: 100vh;
   background-color: white;
-  border-radius: 0 20px 20px 0;
+  border-radius: 0 0 20px 0;
 }
 
 .profile__navbar__logo {
@@ -44,7 +45,7 @@ li {
   margin-top: 20px;
 
   & p:nth-child(2) {
-    color: #040bff;
+    color: rgb(95, 99, 242);
     font-size: 14px;
     margin-top: 5px;
   }
@@ -67,9 +68,10 @@ li {
   align-items: center;
   margin-top: 5px;
   padding-bottom: 20px;
+  cursor: pointer;
 
   p {
-    color: #040bff;
+    color: rgb(146, 153, 184);
     font-weight: 500;
   }
 
@@ -77,5 +79,162 @@ li {
     width: 11px;
     height: 16px;
     margin: 6px 0 0 10px;
+  }
+}
+
+.profile__navbar__list {
+  transition-duration: .5s;
+  margin-top: -79px;
+  background-color: white;
+  position: absolute;
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  p {
+    color: #9299b8;
+    font-size: 15px;
+    margin-left: 15px;
+  }
+
+  svg {
+    color: rgb(146, 153, 184);
+  }
+}
+
+.profile__navbar__addProfile {
+  transition-duration: .3s;
+  margin-top: 0!important;
+}
+
+.profile__navbar__selectImg {
+  transition-duration: .3s;
+  transform: rotate(0deg);
+}
+
+.profile__navbar__selectImgActive {
+  transition-duration: .3s;
+  transform: rotate(90deg);
+}
+
+.profile__navbar__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  opacity: 0;
+
+  button {
+    border: none;
+    background-color: white;
+    display: flex;
+    margin: 25px 0;
+  }
+
+  span {
+    color: rgb(95, 99, 242);
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.buttonPros {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(95, 99, 242);
+  border-radius: 50%;
+}
+
+.profile__navbar__buttonActive {
+  transition-duration: .3s;
+  opacity: 1;
+}
+
+.navbarItemActive {
+  svg {
+    color: rgb(95, 99, 242);
+  }
+  p {
+    color: rgb(95, 99, 242);
+  }
+}
+.profile__content {
+  width: 88%;
+}
+
+.profile__header {
+  min-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 0 20px;
+}
+
+.profile__header__desc {
+  display: flex;
+  align-items: center;
+
+  div {
+    margin-left: 20px;
+  }
+}
+
+.profile__header__time p {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(95, 99, 242);
+}
+
+.profile__header__balance {
+  display: flex;
+  align-items: center;
+  color: rgb(95, 99, 242);
+
+  p {
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  & p:last-child {
+    color: #0a0a0a!important;
+  }
+}
+
+.profile__header__notification {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  svg {
+    font-size: 23px;
+    margin-top: -14px;
+    margin-left: 14px;
+  }
+}
+
+.profile__header__notification__desc {
+  width: 25px;
+  height: 18px;
+  background-color: #5f63f2;
+  color: white;
+  border-radius: 41%;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 500;
+  position: relative;
+}
+
+.profile__header__buttonMail {
+  button {
+    border: none;
+    background-color: white;
+    font-weight: 500;
+    margin-right: 10px;
   }
 }

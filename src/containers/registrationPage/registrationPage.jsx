@@ -7,7 +7,7 @@ import Registration from "../../shared/components/registration/registration";
 import RegistrationFormSecond from "../../shared/components/registration/registrationFormSecond/registrationFormSecond";
 import Entrance from "../../shared/components/registration/entrance/entrance";
 
-const RegistrationPage = ({setCreateAnAccount, dispatch, state}) => {
+const RegistrationPage = ({dispatch, state}) => {
     const [registration , setRegistration] = useState(true)
     const [entrance , setEntrance] = useState(true)
 
@@ -50,7 +50,6 @@ const RegistrationPage = ({setCreateAnAccount, dispatch, state}) => {
                         : <RegistrationFormSecond
                                 dispatch={dispatch}
                                 state={state}
-                                setCreateAnAccount={setCreateAnAccount}
                             />
                         : <Entrance />
                 }

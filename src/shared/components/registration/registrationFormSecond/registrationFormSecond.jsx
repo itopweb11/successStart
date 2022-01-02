@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from 'react';
+import React, {useState} from 'react';
 import Phone from "../../../img/svg/phone";
 import User from "../../../img/svg/user";
 import LockIcon from "../../../img/svg/LockIcon";
@@ -8,8 +8,9 @@ import InputMask from "react-input-mask";
 import axios from "axios";
 import vector222 from "../../../img/components/registration/Vector222.png";
 import {emailRegex, phoneRegex, registerPassRegex} from "../../../../utils/regex";
+import {NavLink} from "react-router-dom";
 
-const RegistrationFormSecond = ({setCreateAnAccount, dispatch, state}) => {
+const RegistrationFormSecond = ({dispatch, state}) => {
     const [phone, setPhone] = useState(false);
     const [activeElem , setActiveElem] = useState(false)
     const [inputConfirm , setInputConfirm] = useState(false)
@@ -214,13 +215,14 @@ const RegistrationFormSecond = ({setCreateAnAccount, dispatch, state}) => {
                         </span>
                 </label>
             </div>
-            <button
-                disabled={!(phoneRegex.test(state.phone) && state.user && state.phoneCode && strLength >= wordCountLength)}
-                className='registration__buttonContinue'
-                onClick={() => setCreateAnAccount(false)}
-            >
-                Создать аккаунт
-            </button>
+            <NavLink to="/profilePage">
+                <button
+                    disabled={!(phoneRegex.test(state.phone) && state.user && state.phoneCode && strLength >= wordCountLength)}
+                    className='registration__buttonContinue'
+                >
+                    Создать аккаунт
+                </button>
+            </NavLink>
         </div>
         )
 }

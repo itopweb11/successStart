@@ -1,11 +1,8 @@
-import React, {useReducer, useState} from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 import classnames from 'classnames';
 import vector from "../../../shared/img/components/registration/Vector.png";
 import vector222 from "../../img/components/registration/Vector222.png";
-import {
-    people, reducer, iconPassword, buttonContinueDisabled, buttonContinueClassName, confirmEmailBtn
-} from "../../../containers/registrationPage/helper";
 import {
     eightСharacterRegex,
     emailRegex, oneDigitRegex,
