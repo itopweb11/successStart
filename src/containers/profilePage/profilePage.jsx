@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import investImg1 from '../../shared/img/components/profileImg/investmently1.png'
 import user from '../../shared/img/components/profileImg/user.png'
 import vector from '../../shared/img/components/profileImg/Vector1.png'
@@ -11,6 +11,7 @@ import Pros from "../../shared/img/svg/pros";
 import classnames from "classnames";
 import Rouble from "../../shared/img/svg/rouble";
 import Notification from "../../shared/img/svg/notification";
+import axios from "axios";
 
 const ProfilePage = ({state, dispatch}) => {
     const[addProfile, setAddProfile] = useState(false)

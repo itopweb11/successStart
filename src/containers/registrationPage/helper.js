@@ -1,14 +1,27 @@
+/*export const people = {
+    role userType: '',
+    email mail: '',
+    password password: '',
+    confidentiality_acceptance agreement: false,
+    without_patronymic noMiddleName: false,
+    email_code confirmationCode: '',
+    legal_form_type user: '',
+    phone phone: '',
+    phone_code phoneCode: '',
+    fio fullName: ''
+}*/
+
 export const people = {
-    userType: '',
-    mail: '',
+    role: '',
+    email: '',
     password: '',
-    agreement: false,
-    noMiddleName: false,
-    confirmationCode: '',
-    user: '',
+    confidentiality_acceptance: false,
+    without_patronymic: false,
+    email_code: '',
+    legal_form_type: '',
     phone: '',
-    phoneCode: '',
-    fullName: ''
+    phone_code: '',
+    fio: ''
 }
 
  export const reducer = (state, action) => {

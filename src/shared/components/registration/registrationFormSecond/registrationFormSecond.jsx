@@ -7,7 +7,7 @@ import vector from "../../../img/components/registration/Vector.png";
 import InputMask from "react-input-mask";
 import axios from "axios";
 import vector222 from "../../../img/components/registration/Vector222.png";
-import {emailRegex, phoneRegex, registerPassRegex} from "../../../../utils/regex";
+import {phoneRegex} from "../../../../utils/regex";
 import {NavLink} from "react-router-dom";
 
 const RegistrationFormSecond = ({dispatch, state}) => {
@@ -21,15 +21,15 @@ const RegistrationFormSecond = ({dispatch, state}) => {
     })
     const userBtn = classnames({
         'registration__buttons registrationForm__buttons': true,
-        'registration__button-noActive': activeElem && !state.user
+        'registration__button-noActive': activeElem && !state.legal_form_type
     })
 
     const wordCount = (string) => {
         const str = string.match(/[^\s]+/g)
         return str ? str.length : 0;
     }
-    const strLength = wordCount(state.fullName)
-    const wordCountLength = state.noMiddleName ? 2 : 3
+    const strLength = wordCount(state.fio)
+    const wordCountLength = state.without_patronymic ? 2 : 3
 
     const handleOnChange = e => {
         dispatch({
@@ -78,11 +78,23 @@ const RegistrationFormSecond = ({dispatch, state}) => {
     const handleConfirmPhoneCode = () => {
         axios.post("https://api.investonline.su/api/v1/confirmations/check/phone", {
             phone: state.phone,
-            code: state.phoneCode,
+            code: state.phone_code,
             type: "register_request"
         })
             .then(function (response) {
                 setPhoneCode(false)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    const ob = () => {
+        axios.post("https://api.investonline.su/api/v1/register/with-profile",
+            state
+            )
+            .then(function (response) {
+                console.log(1)
             })
             .catch(function (error) {
                 console.log(error);
@@ -94,25 +106,25 @@ const RegistrationFormSecond = ({dispatch, state}) => {
             <p className='registration__title'>Регистрация</p>
             <div className={userBtn}>
                 <button
-                    className={classnames({'registration__button-active': state.user === 'physicalPerson'})}
-                    name='user'
-                    value='physicalPerson'
+                    className={classnames({'registration__button-active': state.legal_form_type === 'indiv'})}
+                    name='legal_form_type'
+                    value='indiv'
                     onClick={handleOnChange}
                 >
                     физ.лицо
                 </button>
                 <button
-                    className={classnames({'registration__button-active': state.user === 'lawyer'})}
-                    name='user'
-                    value='lawyer'
+                    className={classnames({'registration__button-active': state.legal_form_type === 'entity'})}
+                    name='legal_form_type'
+                    value='entity'
                     onClick={handleOnChange}
                 >
                     юр.лицо
                 </button>
                 <button
-                    className={classnames({'registration__button-active': state.user === 'individualEntrepreneur'})}
-                    name='user'
-                    value='individualEntrepreneur'
+                    className={classnames({'registration__button-active': state.legal_form_type === 'ie'})}
+                    name='legal_form_type'
+                    value='ie'
                     onClick={handleOnChange}
                 >
                     ип
@@ -157,12 +169,12 @@ const RegistrationFormSecond = ({dispatch, state}) => {
                         <LockIcon />
                         <input
                             type="number"
-                            name='phoneCode'
-                            value={state.phoneCode}
+                            name='phone_code'
+                            value={state.phone_code}
                             placeholder='Код подтверждения'
                             onChange={handleOnChangePhoneCode}
                         />
-                            {state.phoneCode.length == 4 ? (handleConfirmPhoneCode()) : null}
+                            {state.phone_code.length === 4 ? (handleConfirmPhoneCode()) : null}
                         </div>
                     </div>
                     :null
@@ -172,9 +184,9 @@ const RegistrationFormSecond = ({dispatch, state}) => {
                 <div>
                     <User />
                     <input
-                        className={strLength > 4 || !state.fullName && activeElem && state.noMiddleName ? 'fullName-input' : null}
-                        name="fullName"
-                        value={state.fullName}
+                        className={strLength > 4 || !state.fio && activeElem && state.without_patronymic ? 'fullName-input' : null}
+                        name="fio"
+                        value={state.fio}
                         onChange={handleOnChangeFullName}
                         type="text"
                         placeholder='Иванов Иван Иванович'
@@ -191,25 +203,25 @@ const RegistrationFormSecond = ({dispatch, state}) => {
             <div className='registrationFormLabel'>
                 <label
                     className='registrationLabel'
-                    htmlFor="noMiddleName"
+                    htmlFor="without_patronymic"
                     onClick={()=> setActiveElem(true)}
                 >
                     <span className='registrationFormLabel__desc'>Нет отчества</span>
                     <input
                         type="checkbox"
-                        id="noMiddleName"
-                        name="noMiddleName"
-                        checked={state.noMiddleName}
+                        id="without_patronymic"
+                        name="without_patronymic"
+                        checked={state.without_patronymic}
                         onChange={event => handleOnChange({
                             target: {
-                                name: 'noMiddleName',
+                                name: 'without_patronymic',
                                 value: event.target.checked
                             }
                         })}
                     />
                     <span className={classnames({
                         'registrationLabelImg': true,
-                        'descInputActive': state.noMiddleName
+                        'descInputActive': state.without_patronymic
                     })}>
                             <img src={vector} alt="vector"/>
                         </span>
@@ -217,8 +229,9 @@ const RegistrationFormSecond = ({dispatch, state}) => {
             </div>
             <NavLink to="/profilePage">
                 <button
-                    disabled={!(phoneRegex.test(state.phone) && state.user && state.phoneCode && strLength >= wordCountLength)}
+                    disabled={!(phoneRegex.test(state.phone) && state.legal_form_type && state.phone_code && strLength >= wordCountLength)}
                     className='registration__buttonContinue'
+                    onClick={ob}
                 >
                     Создать аккаунт
                 </button>

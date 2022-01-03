@@ -24,11 +24,11 @@ const Registration = ({setRegistration, dispatch, state}) => {
 
     const confirmBtnClass = classnames({
         'registration__buttonConfirm': true,
-        'registration__buttonConfirmActive': emailRegex.test(state.mail) && !confirm
+        'registration__buttonConfirmActive': emailRegex.test(state.email) && !confirm
     })
     const userBtn = classnames({
         'registration__buttons': true,
-        'registration__button-noActive': activeElem && !state.userType || state.agreement && !state.userType
+        'registration__button-noActive': activeElem && !state.role || state.confidentiality_acceptance && !state.role
     })
 
     const handleOnChange = e => {
@@ -43,7 +43,7 @@ const Registration = ({setRegistration, dispatch, state}) => {
     const handleConfirmEmail = () => {
         setInputConfirm(true)
         axios.post("https://api.investonline.su/api/v1/confirmations/send/email", {
-            email: state.mail,
+            email: state.email,
             type: 'register_request'
         })
             .then(function (response) {
@@ -56,8 +56,8 @@ const Registration = ({setRegistration, dispatch, state}) => {
 
     const handleConfirmCode = () => {
         axios.post("https://api.investonline.su/api/v1/confirmations/check/email", {
-            email: state.mail,
-            code: state.confirmationCode,
+            email: state.email,
+            code: state.email_code,
             type: 'register_request'
         })
             .then(function (response) {
@@ -84,16 +84,16 @@ const Registration = ({setRegistration, dispatch, state}) => {
             <p className='registration__title'>Регистрация</p>
             <div className={userBtn}>
                 <button
-                    className={classnames({'registration__button-active': state.userType === 'investor'})}
-                    name='userType'
+                    className={classnames({'registration__button-active': state.role === 'investor'})}
+                    name='role'
                     value='investor'
                     onClick={handleOnChange}
                 >
                     Инвестор
                 </button>
                 <button
-                    className={classnames({'registration__button-active': state.userType === 'borrower'})}
-                    name='userType'
+                    className={classnames({'registration__button-active': state.role === 'borrower'})}
+                    name='role'
                     value='borrower'
                     onClick={handleOnChange}
                 >
@@ -111,11 +111,11 @@ const Registration = ({setRegistration, dispatch, state}) => {
                             <EmailIcon />
                         </div>
                         <input
-                            className={!state.mail && activeElemMail || state.agreement && !state.mail ? 'fullName-input' : null}
+                            className={!state.email && activeElemMail || state.confidentiality_acceptance && !state.email ? 'fullName-input' : null}
                             onChange={handleOnChange}
-                            value={state.mail}
+                            value={state.email}
                             placeholder='exaple@gmail.com'
-                            name='mail'
+                            name='email'
                             type="text"
                             autoComplete="off"
                             onClick={() => setActiveElem(true)}
@@ -127,7 +127,7 @@ const Registration = ({setRegistration, dispatch, state}) => {
                             : confirm && !codeConfirm
                                 ? <span className='codeConfirm'><img className="registration__passwordReady" src={vector222} alt="check" /></span>
                                 : <button
-                                disabled={!emailRegex.test(state.mail) && !confirm}
+                                disabled={!emailRegex.test(state.email) && !confirm}
                                 onClick={handleConfirmEmail}
                                 className={confirmBtnClass}
                             >
@@ -150,11 +150,11 @@ const Registration = ({setRegistration, dispatch, state}) => {
                                 <input
                                     placeholder='Код подтверждения'
                                     type="number"
-                                    name='confirmationCode'
-                                    value={state.confirmationCode}
+                                    name='email_code'
+                                    value={state.email_code}
                                     onChange={handleOnChangeEmailCode}
                                 />
-                                {state.confirmationCode.length == 4 ? (handleConfirmCode()) : null}
+                                {state.email_code.length == 4 ? (handleConfirmCode()) : null}
                             </div>
                         </div>
                         : null
@@ -169,7 +169,7 @@ const Registration = ({setRegistration, dispatch, state}) => {
                             <LockIcon />
                         </div>
                         <input
-                            className={!state.password && state.agreement ? 'fullName-input' : null}
+                            className={!state.password && state.confidentiality_acceptance ? 'fullName-input' : null}
                             onChange={handleOnChange}
                             value={state.password}
                             placeholder='Пароль'
@@ -218,23 +218,23 @@ const Registration = ({setRegistration, dispatch, state}) => {
                 <div>
                     <label
                         className='registrationLabel'
-                        htmlFor="agreement"
+                        htmlFor="confidentiality_acceptance"
                     >
                         <input
                             type="checkbox"
-                            id="agreement"
-                            name="agreement"
-                            checked={state.agreement}
+                            id="confidentiality_acceptance"
+                            name="confidentiality_acceptance"
+                            checked={state.confidentiality_acceptance}
                             onChange={event => handleOnChange({
                                 target: {
-                                    name: 'agreement',
+                                    name: 'confidentiality_acceptance',
                                     value: event.target.checked
                                 }
                             })}
                         />
                         <span className={classnames({
                             'registrationLabelImg': true,
-                            'descInputActive': state.agreement
+                            'descInputActive': state.confidentiality_acceptance
                         })}>
                             <img src={vector} alt="vector"/>
                         </span>
@@ -245,7 +245,7 @@ const Registration = ({setRegistration, dispatch, state}) => {
                     </label>
                 </div>
                 <button
-                    disabled={!(emailRegex.test(state.mail) && confirm && !codeConfirm && registerPassRegex.test(state.password) && state.agreement && state.userType)}
+                    disabled={!(emailRegex.test(state.email) && confirm && !codeConfirm && registerPassRegex.test(state.password) && state.confidentiality_acceptance && state.role)}
                     className="registration__buttonContinue"
                     onClick={() => setRegistration(false)}
                 >
