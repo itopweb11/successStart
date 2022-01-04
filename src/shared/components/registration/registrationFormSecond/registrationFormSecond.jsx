@@ -8,7 +8,7 @@ import InputMask from "react-input-mask";
 import axios from "axios";
 import vector222 from "../../../img/components/registration/Vector222.png";
 import {phoneRegex} from "../../../../utils/regex";
-import {NavLink} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 const RegistrationFormSecond = ({dispatch, state}) => {
     const [phone, setPhone] = useState(false);
@@ -88,13 +88,13 @@ const RegistrationFormSecond = ({dispatch, state}) => {
                 console.log(error);
             });
     }
-
-    const ob = () => {
+    const history = useHistory();
+    const handleObjectRegister = () => {
         axios.post("https://api.investonline.su/api/v1/register/with-profile",
             state
             )
             .then(function (response) {
-                console.log(1)
+                 history.push("/login");
             })
             .catch(function (error) {
                 console.log(error);
@@ -227,15 +227,13 @@ const RegistrationFormSecond = ({dispatch, state}) => {
                         </span>
                 </label>
             </div>
-            <NavLink to="/profilePage">
-                <button
-                    disabled={!(phoneRegex.test(state.phone) && state.legal_form_type && state.phone_code && strLength >= wordCountLength)}
-                    className='registration__buttonContinue'
-                    onClick={ob}
-                >
-                    Создать аккаунт
-                </button>
-            </NavLink>
+            <button
+                disabled={!(phoneRegex.test(state.phone) && state.legal_form_type && state.phone_code && strLength >= wordCountLength)}
+                className='registration__buttonContinue'
+                onClick={handleObjectRegister}
+            >
+                Создать аккаунт
+            </button>
         </div>
         )
 }

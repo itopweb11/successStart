@@ -1,23 +1,22 @@
 import '../src/scss/app.scss';
 import RegistrationPage from "./containers/registrationPage/registrationPage";
-import {useReducer, useState} from "react";
+import {Route, Switch, BrowserRouter, useHistory} from 'react-router-dom';
+import Entrance from "./shared/components/registration/entrance/entrance";
 import ProfilePage from "./containers/profilePage/profilePage";
-import {people, reducer} from "./containers/registrationPage/helper";
-import {BrowserRouter, Routes, Route,} from "react-router-dom";
 
 function App() {
-    const [state, dispatch] = useReducer(reducer, people);
 
-  return (
-      <div className="App">
-          <BrowserRouter>
-              <Routes>
-                  <Route exact path="/" element={<RegistrationPage state={state} dispatch={dispatch}/>} />
-                  <Route exact path="/profilePage" element={ <ProfilePage state={state} dispatch={dispatch}/>} />
-              </Routes>
-          </BrowserRouter>
-      </div>
-  );
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/" component={ProfilePage}/>
+                    <Route exact path="/register" component={RegistrationPage}/>
+                    <Route exact path="/login" component={Entrance}/>
+                </Switch>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;

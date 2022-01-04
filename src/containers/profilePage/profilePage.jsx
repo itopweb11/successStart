@@ -12,8 +12,10 @@ import classnames from "classnames";
 import Rouble from "../../shared/img/svg/rouble";
 import Notification from "../../shared/img/svg/notification";
 import axios from "axios";
+import {Redirect, useHistory} from "react-router-dom";
 
 const ProfilePage = ({state, dispatch}) => {
+    const history = useHistory();
     const[addProfile, setAddProfile] = useState(false)
     const[buttonMail, setButtonMail] = useState(false)
     const[activeItem, setActiveItem] = useState('invest')
@@ -27,6 +29,10 @@ const ProfilePage = ({state, dispatch}) => {
         'profile__navbar__button': true,
         'profile__navbar__buttonActive': addProfile
     })
+
+    useEffect(() => {
+        if (!localStorage.getItem('token')) history.push('/login')
+    }, [])
 
     return(
         <div className='profile'>
