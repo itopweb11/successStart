@@ -93,6 +93,7 @@ const RegistrationFormSecond = ({dispatch, state}) => {
                 console.log(error);
             });
     }
+
     const history = useHistory();
     const handleObjectRegister = () => {
         axios.post("https://api.investonline.su/api/v1/register/with-profile",

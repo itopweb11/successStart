@@ -6,19 +6,24 @@ import AuthWrapper from "../../wrapperComponents/AuthWrapper";
 import axios from "axios";
 import {people, reducer} from "./helperEntrance";
 import {emailRegex, registerPassRegex} from "../../../../utils/regex";
+import {useHistory} from "react-router-dom";
 
 const Entrance = () => {
     const [passwordImage , setPasswordImage] = useState(false)
     const [state, dispatch] = useReducer(reducer, people);
 
-
+    const history = useHistory();
     const handleConfirmEntrance = () => {
         axios.post("https://api.investonline.su/api/v1/clients/web/login", {
             email: state.email,
             password: state.password
         })
             .then(function (response) {
-                console.log(1)
+                history.push("/profile");
+                localStorage.setItem('access_token', response.data.access_token)
+                localStorage.setItem('refresh_token', response.data.refresh_token)
+                localStorage.setItem('expires_in', response.data.expires_in)
+                console.log(response.data)
             })
             .catch(function (error) {
                 console.log(error);
@@ -33,7 +38,6 @@ const Entrance = () => {
             }
         })
     }
-    console.log(state)
 
     return (
         <AuthWrapper>
