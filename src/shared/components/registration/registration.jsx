@@ -179,6 +179,7 @@ const Registration = ({setRegistration, dispatch, state}) => {
                                 setActiveElem(true)
                                 setActiveElemMail(true)
                             }}
+                            autoComplete="off"
                         />
                         <PasswordControls
                             passwordImage={passwordImage}

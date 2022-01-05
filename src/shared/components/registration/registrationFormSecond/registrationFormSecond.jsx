@@ -15,6 +15,7 @@ const RegistrationFormSecond = ({dispatch, state}) => {
     const [activeElem , setActiveElem] = useState(false)
     const [inputConfirm , setInputConfirm] = useState(false)
     const [phoneCode, setPhoneCode] = useState(true);
+    const [clue, seClue] = useState(true);
     const confirmBtnClass = classnames({
         'registration__buttonConfirm': true,
         'registration__buttonConfirmActive': state.phone.match(phoneRegex) && !phone
@@ -68,9 +69,13 @@ const RegistrationFormSecond = ({dispatch, state}) => {
         })
             .then(function (response) {
                 setPhone(true)
-                console.log(response.data.data.code)
+                seClue(true)
             })
             .catch(function (error) {
+                setInputConfirm(false)
+                setPhone(false)
+                setActiveElem(false)
+                seClue(false)
                 console.log(error);
             });
     }
@@ -135,7 +140,7 @@ const RegistrationFormSecond = ({dispatch, state}) => {
                 <div>
                     <Phone />
                     <InputMask
-                        className={!state.phone && activeElem ? 'fullName-input' : null}
+                        className={!state.phone && activeElem || !clue ? 'fullName-input' : null}
                         mask="+7(999)999-99-99"
                         name='phone'
                         onChange={handleOnChange}
@@ -160,6 +165,11 @@ const RegistrationFormSecond = ({dispatch, state}) => {
                         </button>
                     }
                 </div>
+                {
+                    !phone && !inputConfirm && !clue
+                    ? <p className='registrationForm__input__clue'>Такой Телефон уже зарегистрирован</p>
+                        :null
+                }
             </div>
             {
                 phone && phoneCode

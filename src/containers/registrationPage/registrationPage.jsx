@@ -13,10 +13,7 @@ const RegistrationPage = () => {
             {
                 registration
                     ? <Registration dispatch={dispatch} state={state} setRegistration={setRegistration}/>
-                    : <RegistrationFormSecond
-                        dispatch={dispatch}
-                        state={state}
-                    />
+                    : <RegistrationFormSecond dispatch={dispatch} state={state}/>
             }
         </AuthWrapper>
     )

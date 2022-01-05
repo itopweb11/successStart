@@ -1,22 +1,21 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import EmailIcon from "../../../img/svg/EmailIcon";
 import LockIcon from "../../../img/svg/LockIcon";
 import PasswordControls from "../PasswordControls";
 import AuthWrapper from "../../wrapperComponents/AuthWrapper";
 import axios from "axios";
+import {people, reducer} from "./helperEntrance";
+import {emailRegex, registerPassRegex} from "../../../../utils/regex";
 
 const Entrance = () => {
     const [passwordImage , setPasswordImage] = useState(false)
+    const [state, dispatch] = useReducer(reducer, people);
 
-
-    {
-
-    }
 
     const handleConfirmEntrance = () => {
         axios.post("https://api.investonline.su/api/v1/clients/web/login", {
-            email: "borrower@incrowd.ru",
-            password: "borrowerIncrowd"
+            email: state.email,
+            password: state.password
         })
             .then(function (response) {
                 console.log(1)
@@ -25,6 +24,17 @@ const Entrance = () => {
                 console.log(error);
             });
     }
+
+    const handleOnChange = e => {
+        dispatch({
+            payload: {
+                key: e.target.name,
+                value: e.target.value
+            }
+        })
+    }
+    console.log(state)
+
     return (
         <AuthWrapper>
             <div className='registration'>
@@ -40,6 +50,7 @@ const Entrance = () => {
                                 <EmailIcon />
                             </div>
                             <input
+                                onChange={handleOnChange}
                                 placeholder='exaple@gmail.com'
                                 name='email'
                                 type="text"
@@ -58,6 +69,10 @@ const Entrance = () => {
                             </div>
                             <input
                                 type={passwordImage ? "text" : "password"}
+                                onChange={handleOnChange}
+                                placeholder='Пароль'
+                                name='password'
+                                autoComplete="off"
                             />
                             <PasswordControls
                                 passwordImage={passwordImage}
@@ -69,6 +84,7 @@ const Entrance = () => {
                 </div>
                 <button
                     className="registration__buttonContinue"
+                    disabled={!(emailRegex.test(state.email) && registerPassRegex.test(state.password))}
                     onClick={handleConfirmEntrance}
                 >
                     Вход
