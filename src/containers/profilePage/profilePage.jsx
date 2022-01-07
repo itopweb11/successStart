@@ -11,11 +11,16 @@ import Pros from "../../shared/img/svg/pros";
 import classnames from "classnames";
 import Rouble from "../../shared/img/svg/rouble";
 import Notification from "../../shared/img/svg/notification";
+import axios from "axios";
+import {useHistory} from "react-router-dom";
+import {getProfileInclude} from "./helper";
 
 const ProfilePage = () => {
-    const[addProfile, setAddProfile] = useState(false)
-    const[buttonMail, setButtonMail] = useState(false)
-    const[activeItem, setActiveItem] = useState('invest')
+    const history = useHistory();
+    const [data, setData] = useState(null)
+    const [addProfile, setAddProfile] = useState(false)
+    const [buttonMail, setButtonMail] = useState(false)
+    const [activeItem, setActiveItem] = useState('invest')
 
     const navbarList = classnames({
         'profile__navbar__list': true,
@@ -27,8 +32,28 @@ const ProfilePage = () => {
         'profile__navbar__buttonActive': addProfile
     })
 
-    return(
-        <div className='profile'>
+    useEffect(() => {
+        axios.get(`https://api.investonline.su/api/v1/user/profile?include=${getProfileInclude.join(',')}`,
+            {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                    accept: 'application/x.incrowd.v1+json',
+                }
+            },
+        )
+
+            .then(response => setData(response.data.user.data))
+            .catch(error => console.log(error))
+    }, [])
+
+    useEffect(() => {
+        if (!localStorage.getItem('access_token')) history.push('/login')
+    }, [])
+
+    console.log(data)
+
+    return data
+        ? <div className='profile'>
             <div className='profile__navbar'>
                 <div className='profile__navbar__logo'>
                     <img src={investImg1} alt=""/>
@@ -37,7 +62,7 @@ const ProfilePage = () => {
                 <div className='profile__navbar__userInfo'>
                     <img src={user} alt="user"/>
                     <p>sfgdfgsds</p>
-                    <p>ffff ffffffff hfggggggggg</p>
+                    <p>{data.name}</p>
                     <p>не аккредитован</p>
                 </div>
                 <div
@@ -64,31 +89,31 @@ const ProfilePage = () => {
                 <div className={navbarList}>
                     <ul>
                         <a href="#" onClick={() => setActiveItem('invest')}>
-                            <li className={activeItem === 'invest' ?'navbarItemActive' :null}>
+                            <li className={activeItem === 'invest' ? 'navbarItemActive' : null}>
                                 <Grid/>
                                 <p>Инвестировать</p>
                             </li>
                         </a>
                         <a href="#" onClick={() => setActiveItem('briefcase')}>
-                            <li className={activeItem === 'briefcase' ?'navbarItemActive' :null}>
+                            <li className={activeItem === 'briefcase' ? 'navbarItemActive' : null}>
                                 <Briefcase/>
                                 <p>Ваш портфель</p>
                             </li>
                         </a>
                         <a href="#" onClick={() => setActiveItem('profile')}>
-                            <li className={activeItem === 'profile' ?'navbarItemActive' :null}>
+                            <li className={activeItem === 'profile' ? 'navbarItemActive' : null}>
                                 <User/>
                                 <p>Профиль</p>
                             </li>
                         </a>
                         <a href="#" onClick={() => setActiveItem('documentation')}>
-                            <li className={activeItem === 'documentation' ?'navbarItemActive' :null}>
+                            <li className={activeItem === 'documentation' ? 'navbarItemActive' : null}>
                                 <FileText/>
                                 <p>Ваши документы</p>
                             </li>
                         </a>
                         <a href="#" onClick={() => setActiveItem('events')}>
-                            <li className={activeItem === 'events' ?'navbarItemActive' :null}>
+                            <li className={activeItem === 'events' ? 'navbarItemActive' : null}>
                                 <Info/>
                                 <p>Ваши события</p>
                             </li>
@@ -103,7 +128,7 @@ const ProfilePage = () => {
                     </div>
                     <div className='profile__header__desc'>
                         <div className='profile__header__balance'>
-                            <Rouble />
+                            <Rouble/>
                             <p>Баланс:</p>
                             <p>90 000 000,00 ₽</p>
                         </div>
@@ -111,13 +136,13 @@ const ProfilePage = () => {
                             <div className='profile__header__notification__desc'>
                                 <span>10</span>
                             </div>
-                            <Notification />
+                            <Notification/>
                         </div>
                         <div
                             className='profile__header__buttonMail'
                             onClick={() => buttonMail ? setButtonMail(false) : setButtonMail(true)}
                         >
-                            <button>nebop61635@zherben.com</button>
+                            <button>{data.email}</button>
                             <img
                                 className={buttonMail ? 'profile__navbar__selectImgActive' : 'profile__navbar__selectImg'}
                                 src={vector}
@@ -129,7 +154,8 @@ const ProfilePage = () => {
                 <div className='profile__content-info'></div>
             </div>
         </div>
-    )
+        : null
+
 }
 
 export default ProfilePage;
