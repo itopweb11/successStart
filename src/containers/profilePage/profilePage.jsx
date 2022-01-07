@@ -14,12 +14,15 @@ import Notification from "../../shared/img/svg/notification";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import {getProfileInclude} from "./helper";
+import EmailIcon from "../../shared/img/svg/EmailIcon";
 
 const ProfilePage = () => {
     const history = useHistory();
     const [data, setData] = useState(null)
     const [addProfile, setAddProfile] = useState(false)
     const [buttonMail, setButtonMail] = useState(false)
+    const [balance, setBalance] = useState(false)
+    const [email, setEmail] = useState(false)
     const [activeItem, setActiveItem] = useState('invest')
 
     const navbarList = classnames({
@@ -32,6 +35,11 @@ const ProfilePage = () => {
         'profile__navbar__buttonActive': addProfile
     })
 
+    const emailIcon = classnames({
+        'profile__header__emailIcon': true,
+        'profile__header__emailIconActive': email
+    })
+
     useEffect(() => {
         axios.get(`https://api.investonline.su/api/v1/user/profile?include=${getProfileInclude.join(',')}`,
             {
@@ -42,7 +50,7 @@ const ProfilePage = () => {
             },
         )
 
-            .then(response => setData(response.data.user.data))
+            .then(response => setData(response.data.profile.data))
             .catch(error => console.log(error))
     }, [])
 
@@ -50,7 +58,8 @@ const ProfilePage = () => {
         if (!localStorage.getItem('access_token')) history.push('/login')
     }, [])
 
-    console.log(data)
+    console.log(balance)
+    console.log(email)
 
     return data
         ? <div className='profile'>
@@ -61,9 +70,9 @@ const ProfilePage = () => {
                 <div className='profile__navbar__line'/>
                 <div className='profile__navbar__userInfo'>
                     <img src={user} alt="user"/>
-                    <p>sfgdfgsds</p>
-                    <p>{data.name}</p>
-                    <p>не аккредитован</p>
+                    <p>{data.user.roles[0].description}</p>
+                    <p>{data.user.name}</p>
+                    <p className={data.accreditation_status.value === 'Аккредитован' ? 'accredited' : 'noAccredited'}>{data.accreditation_status.value}</p>
                 </div>
                 <div
                     className='profile__navbar__select'
@@ -123,14 +132,13 @@ const ProfilePage = () => {
             </div>
             <div className='profile__content'>
                 <div className='profile__header'>
-                    <div className='profile__header__time'>
-                        <p>30 декабря, четверг, 16:26</p>
-                    </div>
                     <div className='profile__header__desc'>
                         <div className='profile__header__balance'>
-                            <Rouble/>
-                            <p>Баланс:</p>
-                            <p>90 000 000,00 ₽</p>
+                            <div onClick={()=> balance ? setBalance(false) : setBalance(true)}
+                                 className={balance ? 'balanceActive' : null}>
+                                <Rouble/>
+                            </div>
+                            <p className={balance ? 'balanceActive' : 'balanceActiveNon'}><span>Баланс:</span>90 000 000,00 ₽</p>
                         </div>
                         <div className='profile__header__notification'>
                             <div className='profile__header__notification__desc'>
@@ -138,16 +146,25 @@ const ProfilePage = () => {
                             </div>
                             <Notification/>
                         </div>
-                        <div
-                            className='profile__header__buttonMail'
-                            onClick={() => buttonMail ? setButtonMail(false) : setButtonMail(true)}
-                        >
-                            <button>{data.email}</button>
-                            <img
-                                className={buttonMail ? 'profile__navbar__selectImgActive' : 'profile__navbar__selectImg'}
-                                src={vector}
-                                alt="vector"
-                            />
+                        <div className='profile__header__buttonMail'>
+                            <div
+                                className={emailIcon}
+                                onClick={() => email ? setEmail(false) : setEmail(true)}
+                            >
+                                <EmailIcon />
+                            </div>
+                            <div className={email ? 'emailActive' : 'emailActiveNon'}>
+                                <span
+                                    onClick={() => buttonMail ? setButtonMail(false) : setButtonMail(true)}
+                                >
+                                    {data.user.email}
+                                </span>
+                                <img
+                                    className={buttonMail ? 'profile__navbar__selectImgActive' : 'profile__navbar__selectImg'}
+                                    src={vector}
+                                    alt="vector"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

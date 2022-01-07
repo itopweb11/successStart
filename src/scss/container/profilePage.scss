@@ -55,11 +55,16 @@ li {
     font-size: 17px;
     margin-top: 10px;
   }
+}
 
-  & p:last-child {
-    color: #ff040c;
-    font-size: 14px;
-  }
+.noAccredited {
+  color: #ff040c;
+  font-size: 14px;
+}
+
+.accredited {
+  color: rgb(95, 99, 242);
+  font-size: 14px;
 }
 
 .profile__navbar__select {
@@ -173,7 +178,7 @@ li {
 .profile__header {
   min-height: 60px;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   background-color: white;
   padding: 0 20px;
@@ -188,26 +193,43 @@ li {
   }
 }
 
-.profile__header__time p {
-  font-size: 16px;
-  font-weight: 500;
-  color: rgb(95, 99, 242);
-}
-
 .profile__header__balance {
   display: flex;
   align-items: center;
-  color: rgb(95, 99, 242);
+
+  div {
+    transition-duration: 1s;
+    margin-right: -198px;
+    color: rgb(95, 99, 242);
+    cursor: pointer;
+    position: relative;
+
+    svg {
+      font-size: 20px;
+    }
+  }
 
   p {
     margin-left: 5px;
     font-size: 16px;
     font-weight: 500;
+    color: #0a0a0a;
   }
 
-  & p:last-child {
-    color: #0a0a0a!important;
+  span {
+    color: rgb(95, 99, 242);
   }
+}
+
+.balanceActive {
+  transition-duration: 4s;
+  margin-right: 0!important;
+  opacity: 1;
+}
+
+.balanceActiveNon {
+  transition-duration: 1s;
+  opacity: 0;
 }
 
 .profile__header__notification {
@@ -235,10 +257,47 @@ li {
 }
 
 .profile__header__buttonMail {
-  button {
-    border: none;
-    background-color: white;
+  display: flex;
+  span {
     font-weight: 500;
     margin-right: 10px;
   }
+
+  img {
+    width: 10px;
+    height: 15px;
+    margin-top: 6px;
+  }
+}
+
+.profile__header__emailIcon {
+  transition-duration: 1s;
+  margin-right: -195px;
+  margin-left: 0!important;
+  position: relative;
+  cursor: pointer;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: rgb(95, 99, 242);
+    background-color: white;
+  }
+}
+
+.profile__header__emailIconActive {
+  transition-duration: 1s;
+  margin-right: 0!important;
+}
+
+.emailActive {
+  transition-duration: 1s;
+  opacity: 1;
+  display: flex;
+}
+
+.emailActiveNon {
+  transition-duration: 10s!important;
+  opacity: 0;
+  position: absolute;
 }
