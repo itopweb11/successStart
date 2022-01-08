@@ -35,9 +35,19 @@ const ProfilePage = () => {
         'profile__navbar__buttonActive': addProfile
     })
 
+    const profileHeaders = classnames({
+        'profile__header__desc': true,
+        'emailActive': email
+    })
+
     const emailIcon = classnames({
         'profile__header__emailIcon': true,
-        'profile__header__emailIconActive': email
+        'activeIcon': email
+    })
+
+    const account = classnames({
+        'profile__header__account': true,
+        'accountActive': email && buttonMail
     })
 
     useEffect(() => {
@@ -58,8 +68,7 @@ const ProfilePage = () => {
         if (!localStorage.getItem('access_token')) history.push('/login')
     }, [])
 
-    console.log(balance)
-    console.log(email)
+    console.log(buttonMail)
 
     return data
         ? <div className='profile'>
@@ -132,10 +141,10 @@ const ProfilePage = () => {
             </div>
             <div className='profile__content'>
                 <div className='profile__header'>
-                    <div className='profile__header__desc'>
+                    <div className={profileHeaders}>
                         <div className='profile__header__balance'>
                             <div onClick={()=> balance ? setBalance(false) : setBalance(true)}
-                                 className={balance ? 'balanceActive' : null}>
+                                 className={balance ? 'balanceActive activeIcon' : null}>
                                 <Rouble/>
                             </div>
                             <p className={balance ? 'balanceActive' : 'balanceActiveNon'}><span>Баланс:</span>90 000 000,00 ₽</p>
@@ -147,15 +156,16 @@ const ProfilePage = () => {
                             <Notification/>
                         </div>
                         <div className='profile__header__buttonMail'>
-                            <div
-                                className={emailIcon}
-                                onClick={() => email ? setEmail(false) : setEmail(true)}
-                            >
-                                <EmailIcon />
-                            </div>
-                            <div className={email ? 'emailActive' : 'emailActiveNon'}>
+                            <div>
+                                <div
+                                    className={emailIcon}
+                                    onClick={() => email ? setEmail(false) : setEmail(true)}
+                                >
+                                    <EmailIcon />
+                                </div>
                                 <span
                                     onClick={() => buttonMail ? setButtonMail(false) : setButtonMail(true)}
+                                    className={email ? 'email__active' : null}
                                 >
                                     {data.user.email}
                                 </span>
@@ -164,6 +174,16 @@ const ProfilePage = () => {
                                     src={vector}
                                     alt="vector"
                                 />
+                            </div>
+                            <div className={account}>
+                                <div>
+                                    <p>{data.user.email}</p>
+                                    <EmailIcon />
+                                </div>
+                                <div>
+                                    <button>Выйти</button>
+                                    <button>Аккаунт</button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,7 @@
+body {
+  overflow-x:hidden;
+}
+
 li {
   list-style: none;
 
@@ -187,10 +191,17 @@ li {
 .profile__header__desc {
   display: flex;
   align-items: center;
+  transition-duration: 1s;
+  margin-right: -220px;
 
   div {
     margin-left: 20px;
   }
+}
+
+.emailActive {
+  transition-duration: 1s;
+  margin-right: 0!important;
 }
 
 .profile__header__balance {
@@ -200,9 +211,12 @@ li {
   div {
     transition-duration: 1s;
     margin-right: -198px;
-    color: rgb(95, 99, 242);
     cursor: pointer;
     position: relative;
+
+    &:hover {
+      color: rgb(95, 99, 242);
+    }
 
     svg {
       font-size: 20px;
@@ -256,23 +270,37 @@ li {
   position: relative;
 }
 
-.profile__header__buttonMail {
+.profile__header__buttonMail div {
   display: flex;
+  align-items: center;
+  margin-left: 0!important;
+
   span {
     font-weight: 500;
-    margin-right: 10px;
+    margin-right: 5px;
+    transition-duration: 1s;
+    margin-left: 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(95, 99, 242);
+    }
   }
 
   img {
     width: 10px;
     height: 15px;
-    margin-top: 6px;
+    margin-top: 4px;
   }
+}
+
+.email__active {
+  transition-duration: 1s;
+  margin-left: 5px!important;
 }
 
 .profile__header__emailIcon {
   transition-duration: 1s;
-  margin-right: -195px;
   margin-left: 0!important;
   position: relative;
   cursor: pointer;
@@ -280,24 +308,37 @@ li {
   svg {
     width: 20px;
     height: 20px;
-    color: rgb(95, 99, 242);
     background-color: white;
+
+    &:hover {
+      color: rgb(95, 99, 242);
+    }
   }
 }
 
-.profile__header__emailIconActive {
-  transition-duration: 1s;
-  margin-right: 0!important;
+.activeIcon {
+  color: rgb(95, 99, 242);
 }
 
-.emailActive {
+.profile__header__account {
+  max-width: 280px;
+  width: 100%;
+  min-height: 80px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  margin-bottom: -108px;
+  background: white;
+  transition-duration: 1s;
+  opacity: 0;
+
+  div {
+    display: flex;
+  }
+}
+
+.accountActive {
   transition-duration: 1s;
   opacity: 1;
-  display: flex;
-}
-
-.emailActiveNon {
-  transition-duration: 10s!important;
-  opacity: 0;
-  position: absolute;
 }
