@@ -5,7 +5,7 @@ import cover from "../../img/components/profileImg/cover-img1.png";
 import Pros from "../../img/svg/pros";
 import classnames from "classnames";
 
-const Profile = ({data}) => {
+const Profile = ({data, menu}) => {
     const [addProfile, setAddProfile] = useState(false)
 
     const navbarButton = classnames({
@@ -45,7 +45,11 @@ const Profile = ({data}) => {
                     </div>
                 </div>
                 <div className='profile__user__info'>
-                    <img src={cover} alt=""/>
+                    <img
+                        className={menu ? 'profileImgMobil' : 'profileImgMobilNone'}
+                        src={cover}
+                        alt="cover"
+                    />
                     <div className='profile__user__desc'>
                         <div className='profile__personalData'>
 

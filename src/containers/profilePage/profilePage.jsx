@@ -156,7 +156,7 @@ const ProfilePage = () => {
                     </div>
                 </div>
                 <div className='profile__content-info'>
-                    <Profile data={data}/>
+                    <Profile data={data} menu={menu}/>
                 </div>
             </div>
         </div>
