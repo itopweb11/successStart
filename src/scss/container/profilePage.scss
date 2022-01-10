@@ -11,7 +11,11 @@ li {
   }
 }
 
-.profile {
+.profile__content {
+  width: 91%;
+}
+
+.profilePage {
   max-width: 100%;
   min-height: 100vh;
   background-color: #edf1f4;
@@ -23,77 +27,29 @@ li {
   min-height: 100vh;
   background-color: white;
   border-radius: 0 0 20px 0;
+  padding-right: 50px;
 }
 
 .profile__navbar__logo {
   display: flex;
-  justify-content: center;
+  margin-top: 20px;
+  justify-content: space-around;
 
   img {
-    margin-top: -20px;
+    width: 150px;
+    height: 26px;
   }
-}
 
-.profile__navbar__line {
-  background-color: #0a0a0a;
-  height: 1px;
-  width: 100%;
-  opacity: .2;;
-}
-
-.profile__navbar__userInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  margin-top: 20px;
-
-  & p:nth-child(2) {
+  svg {
+    width: 30px;
+    height: 26px;
     color: rgb(95, 99, 242);
-    font-size: 14px;
-    margin-top: 5px;
-  }
-
-  & p:nth-child(3) {
-    font-weight: 500;
-    font-size: 17px;
-    margin-top: 10px;
-  }
-}
-
-.noAccredited {
-  color: #ff040c;
-  font-size: 14px;
-}
-
-.accredited {
-  color: rgb(95, 99, 242);
-  font-size: 14px;
-}
-
-.profile__navbar__select {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5px;
-  padding-bottom: 20px;
-  cursor: pointer;
-
-  p {
-    color: rgb(146, 153, 184);
-    font-weight: 500;
-  }
-
-  img  {
-    width: 11px;
-    height: 16px;
-    margin: 6px 0 0 10px;
+    cursor: pointer;
   }
 }
 
 .profile__navbar__list {
   transition-duration: .5s;
-  margin-top: -79px;
   background-color: white;
   position: absolute;
 
@@ -133,40 +89,6 @@ li {
   transform: rotate(90deg);
 }
 
-.profile__navbar__button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  opacity: 0;
-
-  button {
-    border: none;
-    background-color: white;
-    display: flex;
-    margin: 25px 0;
-  }
-
-  span {
-    color: rgb(95, 99, 242);
-    margin-left: 20px;
-    font-size: 18px;
-    font-weight: 500;
-  }
-}
-
-.buttonPros {
-  width: 30px;
-  height: 30px;
-  background-color: rgb(95, 99, 242);
-  border-radius: 50%;
-}
-
-.profile__navbar__buttonActive {
-  transition-duration: .3s;
-  opacity: 1;
-}
-
 .navbarItemActive {
   svg {
     color: rgb(95, 99, 242);
@@ -174,9 +96,6 @@ li {
   p {
     color: rgb(95, 99, 242);
   }
-}
-.profile__content {
-  width: 88%;
 }
 
 .profile__header {
@@ -380,4 +299,20 @@ li {
     border: 1px solid #050505;
     color: #050505;
   }
+
+  & button:first-child:hover {
+    transition: .7s;
+    background-color: #050505;
+    color: white;
+  }
+
+  & button:last-child:hover {
+    transition: .7s;
+    background-color: #5f63f2;
+    color: white;
+  }
+}
+
+.profile__content-info {
+  margin: 20px 35px;
 }

@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import investImg1 from '../../shared/img/components/profileImg/investmently1.png'
-import user from '../../shared/img/components/profileImg/user.png'
+import LogoDark from '../../shared/img/components/profileImg/LogoDark.svg'
 import vector from '../../shared/img/components/profileImg/Vector1.png'
 import User from "../../shared/img/svg/user";
 import FileText from "../../shared/img/svg/fileText";
 import Grid from "../../shared/img/svg/grid";
 import Briefcase from "../../shared/img/svg/briefcase";
 import Info from "../../shared/img/svg/info";
-import Pros from "../../shared/img/svg/pros";
 import classnames from "classnames";
 import Rouble from "../../shared/img/svg/rouble";
 import Notification from "../../shared/img/svg/notification";
@@ -16,25 +14,16 @@ import {useHistory} from "react-router-dom";
 import {getProfileInclude} from "./helper";
 import EmailIcon from "../../shared/img/svg/EmailIcon";
 import Settings from "../../shared/img/svg/settings";
+import Menu from "../../shared/img/svg/menu";
+import Profile from "../../shared/components/profile/profile";
 
 const ProfilePage = () => {
     const history = useHistory();
     const [data, setData] = useState(null)
-    const [addProfile, setAddProfile] = useState(false)
     const [buttonMail, setButtonMail] = useState(false)
     const [balance, setBalance] = useState(false)
     const [email, setEmail] = useState(false)
-    const [activeItem, setActiveItem] = useState('invest')
-
-    const navbarList = classnames({
-        'profile__navbar__list': true,
-        'profile__navbar__addProfile': addProfile
-    })
-
-    const navbarButton = classnames({
-        'profile__navbar__button': true,
-        'profile__navbar__buttonActive': addProfile
-    })
+    const [activeItem, setActiveItem] = useState('profile')
 
     const profileHeaders = classnames({
         'profile__header__desc': true,
@@ -68,44 +57,23 @@ const ProfilePage = () => {
         if (!localStorage.getItem('access_token')) history.push('/login')
     }, [])
 
-    console.log(data)
+    const transitionEntrance = () => {history.push("/login");}
 
     return data
-        ? <div className='profile'>
+        ? <div className='profilePage'>
             <div className='profile__navbar'>
                 <div className='profile__navbar__logo'>
-                    <img src={investImg1} alt=""/>
+                    <Menu/>
+                    <img src={LogoDark} alt="LogoDark"/>
                 </div>
-                <div className='profile__navbar__line'/>
-                <div className='profile__navbar__userInfo'>
-                    <img src={user} alt="user"/>
-                    <p>{data.user.roles[0].description}</p>
-                    <p>{data.user.name}</p>
-                    <p className={data.accreditation_status.value === 'Аккредитован' ? 'accredited' : 'noAccredited'}>{data.accreditation_status.value}</p>
-                </div>
-                <div
-                    className='profile__navbar__select'
-                    onClick={() => addProfile ? setAddProfile(false) : setAddProfile(true)}
-                >
-                    <p>Выбрать профиль</p>
-                    <img
-                        className={addProfile ? 'profile__navbar__selectImgActive' : 'profile__navbar__selectImg'}
-                        src={vector}
-                        alt="vector"
-                    />
-                </div>
-                <div className='profile__navbar__line'/>
-                <div className={navbarButton}>
-                    <button>
-                        <div className='buttonPros'>
-                            <Pros/>
-                        </div>
-                        <span>Добавить профиль</span>
-                    </button>
-                    <div className='profile__navbar__line'/>
-                </div>
-                <div className={navbarList}>
+                <div className='profile__navbar__list'>
                     <ul>
+                        <a href="#" onClick={() => setActiveItem('profile')}>
+                            <li className={activeItem === 'profile' ? 'navbarItemActive' : null}>
+                                <User/>
+                                <p>Профиль</p>
+                            </li>
+                        </a>
                         <a href="#" onClick={() => setActiveItem('invest')}>
                             <li className={activeItem === 'invest' ? 'navbarItemActive' : null}>
                                 <Grid/>
@@ -116,12 +84,6 @@ const ProfilePage = () => {
                             <li className={activeItem === 'briefcase' ? 'navbarItemActive' : null}>
                                 <Briefcase/>
                                 <p>Ваш портфель</p>
-                            </li>
-                        </a>
-                        <a href="#" onClick={() => setActiveItem('profile')}>
-                            <li className={activeItem === 'profile' ? 'navbarItemActive' : null}>
-                                <User/>
-                                <p>Профиль</p>
                             </li>
                         </a>
                         <a href="#" onClick={() => setActiveItem('documentation')}>
@@ -181,14 +143,16 @@ const ProfilePage = () => {
                                     <Settings />
                                 </div>
                                 <div className='header__accountSettings_buttons'>
-                                    <button>Выйти</button>
+                                    <button onClick={transitionEntrance}>Выйти</button>
                                     <button>Аккаунт</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className='profile__content-info'></div>
+                <div className='profile__content-info'>
+                    <Profile data={data}/>
+                </div>
             </div>
         </div>
         : null
