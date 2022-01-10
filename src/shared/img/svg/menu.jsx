@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Menu = () => {
+const Menu = ({menu, setMenu}) => {
     return(
         <svg
             width="18"
@@ -11,11 +11,13 @@ const Menu = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="feather feather-menu ">
+            onClick={() => menu ? setMenu(false) : setMenu(true)}
+            className={menu ? 'feather feather-menu profile__navbarButton' : 'feather feather-menu'}
+        >
             <g>
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
             </g>
         </svg>
     )

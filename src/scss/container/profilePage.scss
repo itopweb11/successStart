@@ -12,7 +12,7 @@ li {
 }
 
 .profile__content {
-  width: 91%;
+  width: 100%;
 }
 
 .profilePage {
@@ -30,6 +30,26 @@ li {
   padding-right: 50px;
 }
 
+.profile__navbarMenuText {
+  transition: 1s;
+  margin-left: -177px!important;
+  opacity: 0!important;
+}
+
+.profile__navbarMobilLogo {
+  transition: 1s;
+  margin-left: -181px!important;
+  opacity: 0!important;
+}
+
+.profile__navbarButton {
+  margin-left: 26px!important;
+}
+
+.profile__navbarIcon {
+  margin-left: -15px;
+}
+
 .profile__navbar__logo {
   display: flex;
   margin-top: 20px;
@@ -38,6 +58,9 @@ li {
   img {
     width: 150px;
     height: 26px;
+    transition: 1s;
+    margin-left: 0;
+    opacity: 1;
   }
 
   svg {
@@ -45,6 +68,7 @@ li {
     height: 26px;
     color: rgb(95, 99, 242);
     cursor: pointer;
+    margin-left: 26px;
   }
 }
 
@@ -62,7 +86,9 @@ li {
   p {
     color: #9299b8;
     font-size: 15px;
+    transition: 1s;
     margin-left: 15px;
+    opacity: 1;
   }
 
   svg {

@@ -23,6 +23,7 @@ const ProfilePage = () => {
     const [buttonMail, setButtonMail] = useState(false)
     const [balance, setBalance] = useState(false)
     const [email, setEmail] = useState(false)
+    const [menu, setMenu] = useState(false)
     const [activeItem, setActiveItem] = useState('profile')
 
     const profileHeaders = classnames({
@@ -63,39 +64,43 @@ const ProfilePage = () => {
         ? <div className='profilePage'>
             <div className='profile__navbar'>
                 <div className='profile__navbar__logo'>
-                    <Menu/>
-                    <img src={LogoDark} alt="LogoDark"/>
+                    <Menu menu={menu} setMenu={setMenu}/>
+                    <img
+                        className={menu ? 'profile__navbarMobilLogo' : null}
+                        src={LogoDark}
+                        alt="LogoDark"
+                    />
                 </div>
                 <div className='profile__navbar__list'>
                     <ul>
                         <a href="#" onClick={() => setActiveItem('profile')}>
                             <li className={activeItem === 'profile' ? 'navbarItemActive' : null}>
                                 <User/>
-                                <p>Профиль</p>
+                                <p className={menu ? 'profile__navbarMenuText' : null}>Профиль</p>
                             </li>
                         </a>
                         <a href="#" onClick={() => setActiveItem('invest')}>
                             <li className={activeItem === 'invest' ? 'navbarItemActive' : null}>
                                 <Grid/>
-                                <p>Инвестировать</p>
+                                <p className={menu ? 'profile__navbarMenuText' : null}>Инвестировать</p>
                             </li>
                         </a>
                         <a href="#" onClick={() => setActiveItem('briefcase')}>
                             <li className={activeItem === 'briefcase' ? 'navbarItemActive' : null}>
                                 <Briefcase/>
-                                <p>Ваш портфель</p>
+                                <p className={menu ? 'profile__navbarMenuText' : null}>Ваш портфель</p>
                             </li>
                         </a>
                         <a href="#" onClick={() => setActiveItem('documentation')}>
                             <li className={activeItem === 'documentation' ? 'navbarItemActive' : null}>
                                 <FileText/>
-                                <p>Ваши документы</p>
+                                <p className={menu ? 'profile__navbarMenuText' : null}>Ваши документы</p>
                             </li>
                         </a>
                         <a href="#" onClick={() => setActiveItem('events')}>
                             <li className={activeItem === 'events' ? 'navbarItemActive' : null}>
                                 <Info/>
-                                <p>Ваши события</p>
+                                <p className={menu ? 'profile__navbarMenuText' : null}>Ваши события</p>
                             </li>
                         </a>
                     </ul>
