@@ -15,6 +15,7 @@ import axios from "axios";
 import {useHistory} from "react-router-dom";
 import {getProfileInclude} from "./helper";
 import EmailIcon from "../../shared/img/svg/EmailIcon";
+import Settings from "../../shared/img/svg/settings";
 
 const ProfilePage = () => {
     const history = useHistory();
@@ -59,7 +60,6 @@ const ProfilePage = () => {
                 }
             },
         )
-
             .then(response => setData(response.data.profile.data))
             .catch(error => console.log(error))
     }, [])
@@ -68,7 +68,7 @@ const ProfilePage = () => {
         if (!localStorage.getItem('access_token')) history.push('/login')
     }, [])
 
-    console.log(buttonMail)
+    console.log(data)
 
     return data
         ? <div className='profile'>
@@ -156,7 +156,7 @@ const ProfilePage = () => {
                             <Notification/>
                         </div>
                         <div className='profile__header__buttonMail'>
-                            <div>
+                            <div className='profile__header__buttonMail_desc'>
                                 <div
                                     className={emailIcon}
                                     onClick={() => email ? setEmail(false) : setEmail(true)}
@@ -176,11 +176,11 @@ const ProfilePage = () => {
                                 />
                             </div>
                             <div className={account}>
-                                <div>
+                                <div className='header__accountSettings'>
                                     <p>{data.user.email}</p>
-                                    <EmailIcon />
+                                    <Settings />
                                 </div>
-                                <div>
+                                <div className='header__accountSettings_buttons'>
                                     <button>Выйти</button>
                                     <button>Аккаунт</button>
                                 </div>

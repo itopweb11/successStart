@@ -193,10 +193,6 @@ li {
   align-items: center;
   transition-duration: 1s;
   margin-right: -220px;
-
-  div {
-    margin-left: 20px;
-  }
 }
 
 .emailActive {
@@ -251,6 +247,8 @@ li {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  margin-left: 33px;
+
   svg {
     font-size: 23px;
     margin-top: -14px;
@@ -270,10 +268,10 @@ li {
   position: relative;
 }
 
-.profile__header__buttonMail div {
+.profile__header__buttonMail {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-left: 0!important;
 
   span {
     font-weight: 500;
@@ -292,6 +290,12 @@ li {
     height: 15px;
     margin-top: 4px;
   }
+}
+
+.profile__header__buttonMail_desc {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
 }
 
 .email__active {
@@ -321,24 +325,59 @@ li {
 }
 
 .profile__header__account {
-  max-width: 280px;
-  width: 100%;
   min-height: 80px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
-  margin-bottom: -108px;
+  justify-content: space-around;
   background: white;
   transition-duration: 1s;
   opacity: 0;
-
-  div {
-    display: flex;
-  }
+  padding: 0 15px;
+  margin: 25px 0 -108px 20px;
 }
 
 .accountActive {
   transition-duration: 1s;
   opacity: 1;
+}
+
+.header__accountSettings {
+  display: flex;
+  align-items: center;
+  p {
+    font-size: 15px;
+    margin-right: 15px;
+    color: rgb(95, 99, 242);
+  }
+
+  svg {
+    color: rgb(95, 99, 242);
+    cursor: pointer;
+  }
+
+  svg:hover {
+    transition-duration: 1s;
+    transform: rotate(360deg)
+  }
+}
+
+.header__accountSettings_buttons {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    border-radius: 4px;
+    width: 90px;
+    height: 30px;
+    font-weight: 500;
+    background: white;
+    border: 1px solid #5f63f2;
+    color: #5f63f2;
+  }
+
+  & button:first-child {
+    border: 1px solid #050505;
+    color: #050505;
+  }
 }
