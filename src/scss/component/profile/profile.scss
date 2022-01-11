@@ -9,6 +9,10 @@
   margin-top: 35px;
 }
 
+.profile__title {
+  width: 15%;
+}
+
 .profile__user__button {
   display: flex;
   flex-direction: column;
@@ -107,23 +111,56 @@
   min-height: 380px;
   background-color: white;
   border-radius: 10px;
+  transition: 1s;
+  transform: scale(1);
+}
+
+.profile__userMobil {
+  transition: 1s;
+  transform: scale(1.09)!important;
+  margin-left: 20px;
+  margin-top: 35px;
 }
 
 .profile__user__info {
   display: flex;
   flex-direction: column;
+  transition: 1s;
+  transform: scale(1);
 }
 
 .profileImgMobil {
   transition: 1s;
-  transform: scale(1.145);
-  margin-top: 18px;
-  margin-right: 87px;
+  transform: scale(1.1);
+  margin-top: 41px;
+  margin-right: 70px;
 }
 
-.profileImgMobilNone {
-  transition: 1s;
-  transform: scale(1);
-  margin-top: 0;
-  margin-right: 0;
+.profile__user__tabs {
+  width: 100%;
+  min-height: 62px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border-radius: 0 0 10px 10px;
+
+  span {
+    color: rgb(146, 153, 184);
+    margin-left: 30px;
+    cursor: pointer;
+
+    &:hover {
+      color: #5F63F2FF;
+    }
+  }
+}
+
+.userTabLine {
+  height: 1px;
+  background-color: #5F63F2FF;
+  margin-top: 2px;
+}
+
+.user__tabTextActive {
+  color: #5F63F2FF!important;
 }

@@ -1,6 +1,6 @@
 import '../src/scss/app.scss';
 import RegistrationPage from "./containers/registrationPage/registrationPage";
-import {Route, Switch, BrowserRouter, useHistory} from 'react-router-dom';
+import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import Entrance from "./shared/components/registration/entrance/entrance";
 import ProfilePage from "./containers/profilePage/profilePage";
 

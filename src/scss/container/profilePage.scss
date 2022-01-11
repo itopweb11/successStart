@@ -279,12 +279,13 @@ li {
   transition-duration: 1s;
   opacity: 0;
   padding: 0 15px;
-  margin: 25px 0 -108px 20px;
+  margin: 25px -493px -108px 20px;
 }
 
 .accountActive {
   transition-duration: 1s;
   opacity: 1;
+  margin-right: -13px;
 }
 
 .header__accountSettings {
@@ -297,13 +298,22 @@ li {
   }
 
   svg {
+    width: 21px;
+    height: 21px;
     color: rgb(95, 99, 242);
     cursor: pointer;
+    transition: all 0.5s ease;
+    animation: rotate 2s linear infinite;
+  }
+  @keyframes rotate {
+    from {
+      transform: rotate(-360deg);
+    }
   }
 
   svg:hover {
-    transition-duration: 1s;
-    transform: rotate(360deg)
+    animation: none;
+    transform: rotate(0);
   }
 }
 
