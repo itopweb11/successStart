@@ -2,24 +2,30 @@
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
-  div {
-    height: 400px;
-    background-color: white;
-    border-radius: 10px;
-  }
 }
 
 .profile__personalData {
   width: 58%;
+  padding: 20px;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .profile__passportData {
   width: 40%;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .profileData__title {
   font-size: 20px;
-  margin: 15px;
   font-family: sans-serif;
   letter-spacing: 1px;
+}
+
+.profile__personalData__desc {
+  display: flex;
+  margin-top: 20px;
 }
