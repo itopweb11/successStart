@@ -4,10 +4,10 @@ const ProfileDescProfile = () => {
     return(
         <div className='profileDescProfile'>
             <div className='profile__personalData'>
-                <h3>Персональные данные</h3>
+                <p className='profileData__title'>Персональные данные</p>
             </div>
             <div className='profile__passportData'>
-                <h3>Паспортные данные</h3>
+                <p className='profileData__title'>Паспортные данные</p>
             </div>
         </div>
     )
