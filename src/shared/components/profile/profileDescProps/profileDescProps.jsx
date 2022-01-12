@@ -1,5 +1,4 @@
 import React from 'react'
-import Rouble from "../../../img/svg/rouble";
 import IssuedBy from "../../../img/svg/IssuedBy";
 
 const ProfileDescProps = () => {

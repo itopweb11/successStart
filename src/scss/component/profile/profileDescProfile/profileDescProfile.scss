@@ -1,3 +1,7 @@
+html {
+  background-color: #edf1f4;
+}
+
 .profileDescProfile {
   display: flex;
   justify-content: space-between;
@@ -7,14 +11,13 @@
 .profile__personalData {
   width: 58%;
   padding: 20px 0;
-  height: 436px;
   background-color: white;
   border-radius: 10px;
 }
 
 .profile__passportData {
   width: 40%;
-  height: 436px;
+  height: 382px;
   padding: 20px 0;
   background-color: white;
   border-radius: 10px;
@@ -46,5 +49,27 @@
   svg {
     color: #5F63F2FF;
     margin-left: 20px;
+  }
+}
+
+.profile__personalData__button {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    border-radius: 4px;
+    padding: 0 20.5px;
+    height: 42px;
+    font-weight: 500;
+    background: transparent;
+    border: 1px solid #5f63f2;
+    color: #5f63f2;
+    margin: 20px 20px 0 0;
+
+    &:hover {
+      transition: .5s;
+      background-color: #5f63f2;
+      color: white;
+    }
   }
 }

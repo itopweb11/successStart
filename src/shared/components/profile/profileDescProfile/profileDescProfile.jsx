@@ -51,6 +51,9 @@ const ProfileDescProfile = ({data}) => {
                     <span>Адрес фактического пребывания</span>
                     <span>{data.legal_form.personal.residence_address}</span>
                 </div>
+                <div className='profile__personalData__button'>
+                    <button>Редоктировать</button>
+                </div>
             </div>
             <div className='profile__passportData'>
                 <p className='profileData__title'>Паспортные данные</p>
@@ -78,6 +81,9 @@ const ProfileDescProfile = ({data}) => {
                     <Scanner />
                     <span>Сканы паспорта</span>
                     <span>паспорт</span>
+                </div>
+                <div className='profile__personalData__button'>
+                    <button>Редоктировать</button>
                 </div>
             </div>
         </div>
