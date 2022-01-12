@@ -5,6 +5,8 @@ import cover from "../../img/components/profileImg/cover-img1.png";
 import Pros from "../../img/svg/pros";
 import classnames from "classnames";
 import ProfileDescProfile from "./profileDescProfile/profileDescProfile";
+import ProfileDescProps from "./profileDescProps/profileDescProps";
+import ProfileDescCheck from "./profileDescCheck/profileDescCheck";
 
 const Profile = ({data, menu}) => {
     const [addProfile, setAddProfile] = useState(false)
@@ -85,7 +87,12 @@ const Profile = ({data, menu}) => {
                         </span>
                     </div>
                     <div className='profile__user__desc'>
-                        <ProfileDescProfile />
+                        {
+                            dataUser === 'profile' ? <ProfileDescProfile data={data} />
+                            : dataUser === 'props' ? <ProfileDescProps />
+                                    : <ProfileDescCheck data={data} />
+                        }
+
                     </div>
                 </div>
             </div>

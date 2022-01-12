@@ -11,7 +11,7 @@ import Scanner from "../../../img/svg/scanner";
 import IssuedBy from "../../../img/svg/IssuedBy";
 import EyeIcon from "../../../img/svg/EyeIcon";
 
-const ProfileDescProfile = () => {
+const ProfileDescProfile = ({data}) => {
     return(
         <div className='profileDescProfile'>
             <div className='profile__personalData'>
@@ -19,37 +19,37 @@ const ProfileDescProfile = () => {
                 <div className='profile__personalData__desc'>
                     <User />
                     <span>ФИО</span>
-                    <span>Иванов Ивааа аАА</span>
+                    <span>{data.legal_form.personal.fio}</span>
                 </div>
                 <div className='profile__personalData__desc'>
                     <DateBirth />
                     <span>Дата рождения</span>
-                    <span>Иванов Ивааа аАА</span>
+                    <span>{data.legal_form.personal.birth_date}</span>
                 </div>
                 <div className='profile__personalData__desc'>
                     <Phone />
                     <span>Телефон</span>
-                    <span>Иванов Ивааа аАА</span>
+                    <span>{data.phone}</span>
                 </div>
                 <div className='profile__personalData__desc'>
                     <FileInn />
                     <span>ИНН</span>
-                    <span>Иванов Ивааа аАА</span>
+                    <span>{data.legal_form.personal.inn}</span>
                 </div>
                 <div className='profile__personalData__desc'>
                     <Place />
                     <span>Место рождения</span>
-                    <span>Иванов Ивааа аАА</span>
+                    <span>{data.legal_form.personal.birth_place}</span>
                 </div>
                 <div className='profile__personalData__desc'>
                     <RegistrationAddress />
                     <span>Адрес регистрации по месту жительства</span>
-                    <span>Иванов Ивааа аАА</span>
+                    <span>{data.legal_form.personal.registration_address}</span>
                 </div>
                 <div className='profile__personalData__desc'>
                     <Home />
                     <span>Адрес фактического пребывания</span>
-                    <span>Иванов Ивааа аАА</span>
+                    <span>{data.legal_form.personal.residence_address}</span>
                 </div>
             </div>
             <div className='profile__passportData'>
@@ -57,27 +57,27 @@ const ProfileDescProfile = () => {
                 <div className='profile__personalData__desc'>
                     <SeriesNumber />
                     <span>Серия и номер паспорта</span>
-                    <span>1111-111111</span>
+                    <span>{data.legal_form.passport.serial_number}</span>
                 </div>
                 <div className='profile__personalData__desc'>
                     <DateBirth />
                     <span>Дата выдачи</span>
-                    <span>1111-111111</span>
+                    <span>{data.legal_form.passport.issue_date}</span>
                 </div>
                 <div className='profile__personalData__desc'>
                     <IssuedBy />
                     <span>Кем выдан</span>
-                    <span>1111-111111</span>
+                    <span>{data.legal_form.passport.issued_by}</span>
                 </div>
                 <div className='profile__personalData__desc'>
                     <EyeIcon />
                     <span>Код подразделения</span>
-                    <span>1111-111111</span>
+                    <span>{data.legal_form.passport.department_code}</span>
                 </div>
                 <div className='profile__personalData__desc'>
                     <Scanner />
                     <span>Сканы паспорта</span>
-                    <span>1111-111111</span>
+                    <span>паспорт</span>
                 </div>
             </div>
         </div>

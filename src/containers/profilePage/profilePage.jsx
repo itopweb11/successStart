@@ -16,7 +16,6 @@ import EmailIcon from "../../shared/img/svg/EmailIcon";
 import Settings from "../../shared/img/svg/settings";
 import Menu from "../../shared/img/svg/menu";
 import Profile from "../../shared/components/profile/profile";
-import Entrance from "../../shared/components/registration/entrance/entrance";
 
 const ProfilePage = () => {
     const history = useHistory();
