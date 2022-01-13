@@ -7,8 +7,8 @@ import Briefcase from "../../../../img/svg/briefcase";
 import FileText from "../../../../img/svg/fileText";
 import Info from "../../../../img/svg/info";
 
-const MainWrapperSidebar = ({menu, setMenu}) => {
-    const [activeItem, setActiveItem] = useState('profile')
+const MainWrapperSidebar = ({menu, setMenu, activeItem, setActiveItem}) => {
+
 
     return (
         <div className='mainWrapperSidebar'>

@@ -4,11 +4,16 @@ import {useHistory} from "react-router-dom";
 import {getProfileInclude} from "./helper";
 import Profile from "../../shared/components/profile/profile";
 import MainWrapper from "../../shared/components/wrapperComponents/MainWrapper";
+import ProfileDescProfile from "../../shared/components/profile/profileDescProfile/profileDescProfile";
+import ProfileDescProps from "../../shared/components/profile/profileDescProps/profileDescProps";
+import ProfileDescCheck from "../../shared/components/profile/profileDescCheck/profileDescCheck";
+import Investments from "../../shared/components/investments/investments";
 
 const ProfilePage = () => {
     const history = useHistory();
     const [data, setData] = useState(null)
     const [menu, setMenu] = useState(false)
+    const [activeItem, setActiveItem] = useState('profile')
 
     useEffect(() => {
         axios.get(`https://api.investonline.su/api/v1/user/profile?include=${getProfileInclude.join(',')}`,
@@ -27,9 +32,17 @@ const ProfilePage = () => {
         if (!localStorage.getItem('access_token')) history.push('/login')
     }, [])
 
+    const content = () => {
+        switch (activeItem) {
+            case 'profile': return <Profile data={data} menu={menu}/>
+            case 'invest': return <Investments />
+            default: return null
+        }
+    }
+
     return data
-        ? <MainWrapper menu={menu} setMenu={setMenu} data={data}>
-            <Profile data={data} menu={menu}/>
+        ? <MainWrapper menu={menu} setMenu={setMenu} data={data} activeItem={activeItem} setActiveItem={setActiveItem}>
+            {content()}
         </MainWrapper>
         : null
 }
