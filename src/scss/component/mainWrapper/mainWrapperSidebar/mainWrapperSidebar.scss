@@ -1,0 +1,101 @@
+.mainWrapperSidebar {
+  max-width: 18%;
+  min-height: 100vh;
+  background-color: white;
+  border-radius: 0 0 20px 0;
+  padding-right: 50px;
+}
+
+.mainWrapperSidebarMenuText {
+  transition: 1s;
+  margin-left: -177px!important;
+  opacity: 0!important;
+}
+
+.mainWrapperSidebarMobilLogo {
+  transition: 1s;
+  margin-left: -181px!important;
+  opacity: 0!important;
+}
+
+.mainWrapperSidebarButton {
+  margin-left: 26px!important;
+}
+
+.mainWrapperSidebarIcon {
+  margin-left: -15px;
+}
+
+.mainWrapperSidebar__logo {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-around;
+
+  img {
+    width: 150px;
+    height: 26px;
+    transition: 1s;
+    margin-left: 0;
+    opacity: 1;
+  }
+
+  svg {
+    width: 30px;
+    height: 26px;
+    color: rgb(95, 99, 242);
+    cursor: pointer;
+    margin-left: 26px;
+  }
+}
+
+.mainWrapperSidebar__list {
+  transition-duration: .5s;
+  background-color: white;
+  position: absolute;
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  p {
+    color: #9299b8;
+    font-size: 15px;
+    transition: 1s;
+    margin-left: 15px;
+    opacity: 1;
+  }
+
+  svg {
+    color: rgb(146, 153, 184);
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.mainWrapperSidebar__addProfile {
+  transition-duration: .3s;
+  margin-top: 0!important;
+}
+
+.mainWrapperSidebar__selectImg {
+  transition-duration: .3s;
+  transform: rotate(0deg);
+}
+
+.mainWrapperSidebar__selectImgActive {
+  transition-duration: .3s;
+  transform: rotate(90deg);
+}
+
+.sidebarItemActive {
+  svg {
+    color: rgb(95, 99, 242);
+  }
+  p {
+    color: rgb(95, 99, 242);
+  }
+}

@@ -1,0 +1,14 @@
+.mainWrapper {
+  max-width: 100%;
+  min-height: 100vh;
+  background-color: #edf1f4;
+  display: flex;
+}
+
+.mainWrapper__contentGroup {
+  width: 100%;
+}
+
+.mainWrapper__contentGroup__info {
+  margin: 20px 24px;
+}

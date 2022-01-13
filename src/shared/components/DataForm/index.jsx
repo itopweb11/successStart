@@ -12,7 +12,7 @@ const DataForm = ({dataForm, formTitle}) => {
             <p className='dataForm__title'>{formTitle}</p>
             {
                 editFormStatus
-                    ? <DataFormEdit state={state}/>
+                    ? <DataFormEdit state={state} setEditFormStatus={setEditFormStatus}/>
                     : <DataFormView data={dataForm} setEditFormStatus={setEditFormStatus} />
             }
         </div>

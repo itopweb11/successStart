@@ -1,24 +1,28 @@
 import React from 'react';
 
-const DataFormEdit = ({data, state}) => {
-    console.log(state)
-    const formEditValue = Object.values(state.data)
+const DataFormEdit = ({state, setEditFormStatus}) => {
+
     const DataFormEditFields = () => {
+        return Object.keys(state.data).map(fieldKey => {
 
-        return formEditValue.map(item => (
-            <div className="dataFormEdi__fFields">
-                <label>{}</label>
-                <input value={item} type="text"/>
-            </div>
-        ))
+            return (
+                <div className="dataFormEdi__fFields">
+                    <label>{state.fieldDesc[fieldKey]}</label>
+                    <input
+                        name={fieldKey}
+                        value={state.data[fieldKey]}
+                        type="text"
+                    />
+                </div>
+            )
+        })
+
     }
-
-
-
 
     return (
         <div>
             <DataFormEditFields />
+            <button onClick={() => setEditFormStatus(false)}>сохранить</button>
         </div>
     )
 }

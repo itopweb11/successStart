@@ -6,6 +6,9 @@
 @import 'component/btn';
 @import 'component/registration';
 @import 'component/dataForm/dataForm';
+@import 'component/mainWrapper/mainWrapper';
+@import 'component/mainWrapper/mainWrapperHeader/mainWrapperHeader';
+@import 'component/mainWrapper/mainWrapperSidebar/mainWrapperSidebar';
 
 //Container
 @import 'container/registrationPage';
@@ -15,9 +18,6 @@
 
 //Entrance
 @import 'component/entrance/entrance';
-
-//ProfilePage
-@import 'container/profilePage';
 
 //investments
 @import 'component/investments/investments';
