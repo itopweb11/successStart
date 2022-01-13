@@ -1,5 +1,5 @@
 .dataForm {
-  width: 58%;
+  width: 49%;
   padding: 20px 0;
   background-color: white;
   border-radius: 10px;
@@ -57,5 +57,30 @@
       }
     }
   }
+}
 
+.dataFormEdi__fFields {
+  input {
+    max-width: 320px;
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid #e3e6ef;
+    border-radius: 4px;
+
+    &:hover {
+      border-color: #8c94ff;
+      border-right-width: 1px!important;
+    }
+
+    &:focus {
+      border-color: #8c94ff;
+      border-right-width: 1px!important;
+      outline: 0;
+      box-shadow: 0 0 0 2px #5F63F233/ 20%;
+    }
+  }
+
+  span {
+    margin-right: 0!important;
+  }
 }

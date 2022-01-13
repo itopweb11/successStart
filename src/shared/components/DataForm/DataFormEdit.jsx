@@ -4,10 +4,11 @@ const DataFormEdit = ({state, setEditFormStatus}) => {
 
     const DataFormEditFields = () => {
         return Object.keys(state.data).map(fieldKey => {
-
+            const Icon = state.dataIcon[fieldKey];
             return (
-                <div className="dataFormEdi__fFields">
-                    <label>{state.fieldDesc[fieldKey]}</label>
+                <div className="dataFormEdi__fFields dataFormView__desc">
+                    <Icon />
+                    <span>{state.fieldDesc[fieldKey]}</span>
                     <input
                         name={fieldKey}
                         value={state.data[fieldKey]}
@@ -16,13 +17,14 @@ const DataFormEdit = ({state, setEditFormStatus}) => {
                 </div>
             )
         })
-
     }
 
     return (
         <div>
             <DataFormEditFields />
-            <button onClick={() => setEditFormStatus(false)}>сохранить</button>
+            <div className='dataFormView__editButton'>
+                <button onClick={() => setEditFormStatus(false)}>сохранить</button>
+            </div>
         </div>
     )
 }
