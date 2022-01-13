@@ -4,41 +4,20 @@ import DateBirth from "../../../../img/svg/dateBirth";
 import IssuedBy from "../../../../img/svg/IssuedBy";
 import EyeIcon from "../../../../img/svg/EyeIcon";
 import Scanner from "../../../../img/svg/scanner";
+import DataForm from "../../../DataForm";
 
 const ProfilePassportData = ({data, setEditPassport}) => {
-    return(
-        <div className='profile__passportData'>
-            <p className='profileData__title'>Паспортные данные</p>
-            <div className='profile__personalData__desc'>
-                <SeriesNumber />
-                <span>Серия и номер паспорта</span>
-                <span>{data.legal_form.passport.serial_number}</span>
-            </div>
-            <div className='profile__personalData__desc'>
-                <DateBirth />
-                <span>Дата выдачи</span>
-                <span>{data.legal_form.passport.issue_date}</span>
-            </div>
-            <div className='profile__personalData__desc'>
-                <IssuedBy />
-                <span>Кем выдан</span>
-                <span>{data.legal_form.passport.issued_by}</span>
-            </div>
-            <div className='profile__personalData__desc'>
-                <EyeIcon />
-                <span>Код подразделения</span>
-                <span>{data.legal_form.passport.department_code}</span>
-            </div>
-            <div className='profile__personalData__desc'>
-                <Scanner />
-                <span>Сканы паспорта</span>
-                <span>паспорт</span>
-            </div>
-            <div className='profile__personalData__button'>
-                <button onClick={() => setEditPassport(true)}>Редоктировать</button>
-            </div>
-        </div>
-    )
+    const passportFormData = data?.legal_form?.passport || {};
+
+    const dataFormat = [
+        {id: 0, key: 'serial_number', label: 'Серия и номер паспорта', value: passportFormData.serial_number, Icon: SeriesNumber},
+        {id: 1, key: 'issue_date', label: 'Дата выдачи', value: passportFormData.issue_date, Icon: DateBirth},
+        {id: 2, key: 'issued_by', label: 'Кем выдан', value: passportFormData.issued_by, Icon: IssuedBy},
+        {id: 3, key: 'department_code', label: 'Код подразделения', value: passportFormData.department_code, Icon: EyeIcon},
+        {id: 4, key: 'паспорт', label: 'Сканы паспорта', value: 'паспорт', Icon: Scanner}
+    ]
+
+    return <DataForm dataForm={dataFormat} formTitle="Паспортные данные" />
 }
 
 export default ProfilePassportData;

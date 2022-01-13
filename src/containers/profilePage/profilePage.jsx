@@ -16,6 +16,7 @@ import EmailIcon from "../../shared/img/svg/EmailIcon";
 import Settings from "../../shared/img/svg/settings";
 import Menu from "../../shared/img/svg/menu";
 import Profile from "../../shared/components/profile/profile";
+import MainWrapper from "../../shared/components/wrapperComponents/MainWrapper";
 
 const ProfilePage = () => {
     const history = useHistory();
@@ -61,105 +62,107 @@ const ProfilePage = () => {
     const transitionEntrance = () => {history.push("/login");}
 
     return data
-        ? <div className='profilePage'>
-            <div className='profile__navbar'>
-                <div className='profile__navbar__logo'>
-                    <Menu menu={menu} setMenu={setMenu}/>
-                    <img
-                        className={menu ? 'profile__navbarMobilLogo' : null}
-                        src={LogoDark}
-                        alt="LogoDark"
-                    />
+        ? <MainWrapper>
+            <div className='profilePage'>
+                <div className='profile__navbar'>
+                    <div className='profile__navbar__logo'>
+                        <Menu menu={menu} setMenu={setMenu}/>
+                        <img
+                            className={menu ? 'profile__navbarMobilLogo' : null}
+                            src={LogoDark}
+                            alt="LogoDark"
+                        />
+                    </div>
+                    <div className='profile__navbar__list'>
+                        <ul>
+                            <a href="#" onClick={() => setActiveItem('profile')}>
+                                <li className={activeItem === 'profile' ? 'navbarItemActive' : null}>
+                                    <User/>
+                                    <p className={menu ? 'profile__navbarMenuText' : null}>Профиль</p>
+                                </li>
+                            </a>
+                            <a href="#" onClick={() => setActiveItem('invest')}>
+                                <li className={activeItem === 'invest' ? 'navbarItemActive' : null}>
+                                    <Grid/>
+                                    <p className={menu ? 'profile__navbarMenuText' : null}>Инвестировать</p>
+                                </li>
+                            </a>
+                            <a href="#" onClick={() => setActiveItem('briefcase')}>
+                                <li className={activeItem === 'briefcase' ? 'navbarItemActive' : null}>
+                                    <Briefcase/>
+                                    <p className={menu ? 'profile__navbarMenuText' : null}>Ваш портфель</p>
+                                </li>
+                            </a>
+                            <a href="#" onClick={() => setActiveItem('documentation')}>
+                                <li className={activeItem === 'documentation' ? 'navbarItemActive' : null}>
+                                    <FileText/>
+                                    <p className={menu ? 'profile__navbarMenuText' : null}>Ваши документы</p>
+                                </li>
+                            </a>
+                            <a href="#" onClick={() => setActiveItem('events')}>
+                                <li className={activeItem === 'events' ? 'navbarItemActive' : null}>
+                                    <Info/>
+                                    <p className={menu ? 'profile__navbarMenuText' : null}>Ваши события</p>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
                 </div>
-                <div className='profile__navbar__list'>
-                    <ul>
-                        <a href="#" onClick={() => setActiveItem('profile')}>
-                            <li className={activeItem === 'profile' ? 'navbarItemActive' : null}>
-                                <User/>
-                                <p className={menu ? 'profile__navbarMenuText' : null}>Профиль</p>
-                            </li>
-                        </a>
-                        <a href="#" onClick={() => setActiveItem('invest')}>
-                            <li className={activeItem === 'invest' ? 'navbarItemActive' : null}>
-                                <Grid/>
-                                <p className={menu ? 'profile__navbarMenuText' : null}>Инвестировать</p>
-                            </li>
-                        </a>
-                        <a href="#" onClick={() => setActiveItem('briefcase')}>
-                            <li className={activeItem === 'briefcase' ? 'navbarItemActive' : null}>
-                                <Briefcase/>
-                                <p className={menu ? 'profile__navbarMenuText' : null}>Ваш портфель</p>
-                            </li>
-                        </a>
-                        <a href="#" onClick={() => setActiveItem('documentation')}>
-                            <li className={activeItem === 'documentation' ? 'navbarItemActive' : null}>
-                                <FileText/>
-                                <p className={menu ? 'profile__navbarMenuText' : null}>Ваши документы</p>
-                            </li>
-                        </a>
-                        <a href="#" onClick={() => setActiveItem('events')}>
-                            <li className={activeItem === 'events' ? 'navbarItemActive' : null}>
-                                <Info/>
-                                <p className={menu ? 'profile__navbarMenuText' : null}>Ваши события</p>
-                            </li>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-            <div className='profile__content'>
-                <div className='profile__header'>
-                    <div className={profileHeaders}>
-                        <div className='profile__header__balance'>
-                            <div onClick={()=> balance ? setBalance(false) : setBalance(true)}
-                                 className={balance ? 'balanceActive activeIcon' : null}>
-                                <Rouble/>
-                            </div>
-                            <p className={balance ? 'balanceActive' : 'balanceActiveNon'}><span>Баланс:</span>90 000 000,00 ₽</p>
-                        </div>
-                        <div className='profile__header__notification'>
-                            <div className='profile__header__notification__desc'>
-                                <span>10</span>
-                            </div>
-                            <Notification/>
-                        </div>
-                        <div className='profile__header__buttonMail'>
-                            <div className='profile__header__buttonMail_desc'>
-                                <div
-                                    className={emailIcon}
-                                    onClick={() => email ? setEmail(false) : setEmail(true)}
-                                >
-                                    <EmailIcon />
+                <div className='profile__content'>
+                    <div className='profile__header'>
+                        <div className={profileHeaders}>
+                            <div className='profile__header__balance'>
+                                <div onClick={()=> balance ? setBalance(false) : setBalance(true)}
+                                     className={balance ? 'balanceActive activeIcon' : null}>
+                                    <Rouble/>
                                 </div>
-                                <span
-                                    onClick={() => buttonMail ? setButtonMail(false) : setButtonMail(true)}
-                                    className={email ? 'email__active' : null}
-                                >
+                                <p className={balance ? 'balanceActive' : 'balanceActiveNon'}><span>Баланс:</span>90 000 000,00 ₽</p>
+                            </div>
+                            <div className='profile__header__notification'>
+                                <div className='profile__header__notification__desc'>
+                                    <span>10</span>
+                                </div>
+                                <Notification/>
+                            </div>
+                            <div className='profile__header__buttonMail'>
+                                <div className='profile__header__buttonMail_desc'>
+                                    <div
+                                        className={emailIcon}
+                                        onClick={() => email ? setEmail(false) : setEmail(true)}
+                                    >
+                                        <EmailIcon />
+                                    </div>
+                                    <span
+                                        onClick={() => buttonMail ? setButtonMail(false) : setButtonMail(true)}
+                                        className={email ? 'email__active' : null}
+                                    >
                                     {data.user.email}
                                 </span>
-                                <img
-                                    className={buttonMail ? 'profile__navbar__selectImgActive' : 'profile__navbar__selectImg'}
-                                    src={vector}
-                                    alt="vector"
-                                />
-                            </div>
-                            <div className={account}>
-                                <div className='header__accountSettings'>
-                                    <p>{data.user.email}</p>
-                                    <Settings />
+                                    <img
+                                        className={buttonMail ? 'profile__navbar__selectImgActive' : 'profile__navbar__selectImg'}
+                                        src={vector}
+                                        alt="vector"
+                                    />
                                 </div>
-                                <div className='header__accountSettings_buttons'>
-                                    <button onClick={transitionEntrance}>Выйти</button>
-                                    <button>Аккаунт</button>
+                                <div className={account}>
+                                    <div className='header__accountSettings'>
+                                        <p>{data.user.email}</p>
+                                        <Settings />
+                                    </div>
+                                    <div className='header__accountSettings_buttons'>
+                                        <button onClick={transitionEntrance}>Выйти</button>
+                                        <button>Аккаунт</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className='profile__content-info'>
-                    <Profile data={data} menu={menu}/>
+                    <div className='profile__content-info'>
+                        <Profile data={data} menu={menu}/>
+                    </div>
                 </div>
             </div>
-        </div>
+        </MainWrapper>
         : null
 
 }

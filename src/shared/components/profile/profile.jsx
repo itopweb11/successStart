@@ -27,6 +27,14 @@ const Profile = ({data, menu}) => {
         'profile__userMobil': menu
     })
 
+    const renderTabContent = () => {
+        switch (dataUser) {
+            case 'profile': return <ProfileDescProfile data={data} />
+            case 'props': return <ProfileDescProps />
+            default: return <ProfileDescCheck data={data} />
+        }
+    }
+
     return(
         <div className='profile'>
             <h3 className='profile__title'>Мой профиль</h3>
@@ -87,12 +95,7 @@ const Profile = ({data, menu}) => {
                         </span>
                     </div>
                     <div className='profile__user__desc'>
-                        {
-                            dataUser === 'profile' ? <ProfileDescProfile data={data} />
-                            : dataUser === 'props' ? <ProfileDescProps />
-                                    : <ProfileDescCheck data={data} />
-                        }
-
+                        {renderTabContent()}
                     </div>
                 </div>
             </div>

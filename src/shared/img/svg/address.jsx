@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RegistrationAddress = () => {
+const Address = () => {
     return(
         <svg viewBox="64 64 896 896"
              focusable="false"
@@ -15,4 +15,4 @@ const RegistrationAddress = () => {
     )
 }
 
-export default RegistrationAddress;
+export default Address;
