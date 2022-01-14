@@ -9,7 +9,7 @@ import Home from "../../../../img/svg/home";
 import DataForm from "../../../DataForm";
 
 
-const ProfilePersonalData = ({data, setEditPersonal}) => {
+const ProfilePersonalData = ({data}) => {
     const personalData = data?.legal_form?.personal || {};
 
     const dataFormat = [

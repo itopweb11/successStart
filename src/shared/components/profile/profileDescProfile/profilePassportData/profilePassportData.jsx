@@ -6,7 +6,7 @@ import EyeIcon from "../../../../img/svg/EyeIcon";
 import Scanner from "../../../../img/svg/scanner";
 import DataForm from "../../../DataForm";
 
-const ProfilePassportData = ({data, setEditPassport}) => {
+const ProfilePassportData = ({data}) => {
     const passportFormData = data?.legal_form?.passport || {};
 
     const dataFormat = [

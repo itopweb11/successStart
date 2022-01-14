@@ -1,16 +1,3 @@
-/*export const people = {
-    role userType: '',
-    email mail: '',
-    password password: '',
-    confidentiality_acceptance agreement: false,
-    without_patronymic noMiddleName: false,
-    email_code confirmationCode: '',
-    legal_form_type user: '',
-    phone phone: '',
-    phone_code phoneCode: '',
-    fio fullName: ''
-}*/
-
 export const people = {
     role: '',
     email: '',

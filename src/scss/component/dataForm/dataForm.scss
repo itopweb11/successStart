@@ -32,6 +32,14 @@
           background-color: #5f63f2;
           color: white;
         }
+
+        &:disabled {
+          border-color: red;
+
+          &:hover {
+            background-color: #aeb6d3;
+          }
+        }
       }
     }
 
@@ -77,6 +85,10 @@
       border-right-width: 1px!important;
       outline: 0;
       box-shadow: 0 0 0 2px #5F63F233/ 20%;
+    }
+
+    &.error {
+      border-color: red;
     }
   }
 

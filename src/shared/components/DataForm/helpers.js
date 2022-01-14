@@ -10,10 +10,30 @@ export const init = data => {
     return {
         data: {...dataFormat},
         fieldDesc: {...fieldDesc},
-        dataIcon: {...dataIcon}
+        dataIcon: {...dataIcon},
+        errorFields: []
     }
 }
 
 export const reducer = (state, action) => {
-    return {...state}
+    switch (action.type) {
+        default:
+            const newErrorFields = [...state.errorFields];
+            const removeElemIdx = newErrorFields.indexOf(action.payload.key);
+
+            if(!action.payload.value.length) {
+               newErrorFields.push(action.payload.key)
+            } else if(removeElemIdx !== -1) {
+                newErrorFields.splice(removeElemIdx, 1)
+            }
+
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    [action.payload.key]: action.payload.value
+                },
+                errorFields: newErrorFields
+            }
+    }
 }
