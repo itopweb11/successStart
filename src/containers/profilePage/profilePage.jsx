@@ -4,9 +4,6 @@ import {useHistory} from "react-router-dom";
 import {getProfileInclude} from "./helper";
 import Profile from "../../shared/components/profile/profile";
 import MainWrapper from "../../shared/components/wrapperComponents/MainWrapper";
-import ProfileDescProfile from "../../shared/components/profile/profileDescProfile/profileDescProfile";
-import ProfileDescProps from "../../shared/components/profile/profileDescProps/profileDescProps";
-import ProfileDescCheck from "../../shared/components/profile/profileDescCheck/profileDescCheck";
 import Investments from "../../shared/components/investments/investments";
 
 const ProfilePage = () => {
