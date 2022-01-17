@@ -1,6 +1,7 @@
 .investments__header {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 
   div {
     width: 49%;
@@ -86,5 +87,21 @@
         padding: 0 30.5px;
       }
     }
+  }
+}
+
+.investments__content {
+  margin-top: 20px;
+
+  &__title {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px!important;
+  }
+
+  span {
+    font-size: 18px;
+    color: #839bff;
+    cursor: pointer;
   }
 }
