@@ -28,8 +28,18 @@ const Investments = () => {
             </div>
             <div className='investments__content'>
                 <p className='investments__content__title'>Инвестиционные предложения</p>
-                <span onClick={() => setInvestments(true)}>Сбор инвестиций</span>
-                <span onClick={() => setInvestments(false)}>Сбор инвестиций завершен</span>
+                <span
+                    className={investments ? 'investments__content__item' : ''}
+                    onClick={() => setInvestments(true)}
+                >
+                    Сбор инвестиций
+                </span>
+                <span
+                    className={!investments ? 'investments__content__item' : ''}
+                    onClick={() => setInvestments(false)}
+                >
+                    Сбор инвестиций завершен
+                </span>
                 {investments ?  <Collection /> : <CollectionCompleted />}
             </div>
         </div>

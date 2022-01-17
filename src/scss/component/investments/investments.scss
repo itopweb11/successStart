@@ -1,107 +1,197 @@
-.investments__header {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+.investments {
 
-  div {
-    width: 49%;
-    background-color: white;
-    min-height: 100px;
-    border-radius: 10px;
+  button {
+    border-radius: 4px;
+    padding: 0 20.5px;
+    height: 42px;
+    font-weight: 500;
+    background: transparent;
+    border: 1px solid #5f63f2;
+    color: #5f63f2;
+
+    &:hover {
+      transition: .5s;
+      background-color: #5f63f2;
+      color: white;
+    }
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__header {
     display: flex;
-
-    button {
-      border-radius: 4px;
-      padding: 0 20.5px;
-      height: 42px;
-      font-weight: 500;
-      background: transparent;
-      border: 1px solid #5f63f2;
-      color: #5f63f2;
-
-      &:hover {
-        transition: .5s;
-        background-color: #5f63f2;
-        color: white;
-      }
-    }
-  }
-
-  &__accreditation {
     justify-content: space-between;
-    padding: 0 20px;
-    align-items: center;
-
-    svg {
-      width: 40px;
-      height: 40px;
-    }
-
-    p {
-      font-size: 18px;
-      font-weight: 500;
-      width: 65%;
-    }
-  }
-
-  &__check {
-    padding: 0 20px;
-
-    p {
-      font-size: 18px;
-      font-weight: 500;
-      color: #5f63f2;
-
-      span {
-        font-weight: 400;
-        color: #8797b6;
-      }
-    }
+    margin-top: 20px;
 
     div {
-      justify-content: end;
+      width: 49%;
+      background-color: white;
+      min-height: 80px;
+      border-radius: 10px;
+      display: flex;
+    }
+
+    &__accreditation {
+      justify-content: space-between;
+      padding: 0 20px;
       align-items: center;
-    }
 
-    &__desc {
-      p:first-child {
-        margin-right: 18px;
+      p {
+        font-size: 18px;
+        font-weight: 500;
+        width: 65%;
       }
-
     }
 
-    &__buttons {
+    &__check {
+      padding: 0 20px;
 
-      button:first-child {
-        background: #20C997FF;
-        color: white;
-        border-color: #20C997FF;
-        margin-right: 20px;
+      p {
+        font-size: 18px;
+        font-weight: 500;
+        color: #5f63f2;
 
-        &:hover {
-          background-color: #12dfa2;
+        span {
+          font-weight: 400;
+          color: #8797b6;
         }
       }
 
-      button:last-child {
-        padding: 0 30.5px;
+      div {
+        justify-content: end;
+        align-items: center;
+      }
+
+      &__desc {
+        p:first-child {
+          margin-right: 18px;
+        }
+
+      }
+
+      &__buttons {
+
+        button:first-child {
+          background: #20C997FF;
+          color: white;
+          border-color: #20C997FF;
+          margin-right: 20px;
+
+          &:hover {
+            background-color: #12dfa2;
+          }
+        }
+
+        button:last-child {
+          padding: 0 30.5px;
+        }
+      }
+    }
+  }
+
+  &__content {
+    margin-top: 20px;
+
+    &__title {
+      font-size: 25px;
+      font-weight: 500;
+      margin-bottom: 10px!important;
+    }
+
+    span {
+      font-size: 18px;
+      color: #839bff;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    &__item {
+      color: #5F63F2FF!important;
+      border-bottom: 2px solid  #5F63F2FF;
+      font-weight: 500;
+    }
+
+    &__collectionCompleted {
+      width: 100%;
+      min-height: 100px;
+      background-color: white;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      margin-top: 20px;
+
+      p {
+        font-size: 18px;
+        font-weight: 500;
+        margin-left: 30px;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    &__collection {
+      margin-top: 20px;
+
+      &__item {
+        width: 100%;
+        min-height: 120px;
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px 20px;
+
+        span {
+          color: #5F63F2FF;
+          margin-right: 0;
+        }
+
+        div {
+          display: flex;
+
+          p {
+            font-size: 18px;
+            color: #7278a5;
+          }
+        }
+
+        div:first-child {
+          justify-content: space-between;
+        }
+
+        div:not(:first-child) {
+          margin-top: 15px;
+
+          p {
+            margin-right: 50px;
+          }
+        }
+
+        div:last-child {
+          align-items: center;
+
+          div {
+            height: 11px;
+            margin-top: 2px;
+            border-radius: 10px;
+            position: relative;
+            width: 30%;
+            background-color: #d5d7ff;
+            margin-right: 50px;
+          }
+
+          p:first-child {
+            margin-right: 20px;
+          }
+        }
       }
     }
   }
 }
 
-.investments__content {
-  margin-top: 20px;
-
-  &__title {
-    font-size: 25px;
-    font-weight: 500;
-    margin-bottom: 10px!important;
-  }
-
-  span {
-    font-size: 18px;
-    color: #839bff;
-    cursor: pointer;
-  }
-}
