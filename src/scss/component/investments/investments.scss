@@ -1,0 +1,90 @@
+.investments__header {
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    width: 49%;
+    background-color: white;
+    min-height: 100px;
+    border-radius: 10px;
+    display: flex;
+
+    button {
+      border-radius: 4px;
+      padding: 0 20.5px;
+      height: 42px;
+      font-weight: 500;
+      background: transparent;
+      border: 1px solid #5f63f2;
+      color: #5f63f2;
+
+      &:hover {
+        transition: .5s;
+        background-color: #5f63f2;
+        color: white;
+      }
+    }
+  }
+
+  &__accreditation {
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 500;
+      width: 65%;
+    }
+  }
+
+  &__check {
+    padding: 0 20px;
+
+    p {
+      font-size: 18px;
+      font-weight: 500;
+      color: #5f63f2;
+
+      span {
+        font-weight: 400;
+        color: #8797b6;
+      }
+    }
+
+    div {
+      justify-content: end;
+      align-items: center;
+    }
+
+    &__desc {
+      p:first-child {
+        margin-right: 18px;
+      }
+
+    }
+
+    &__buttons {
+
+      button:first-child {
+        background: #20C997FF;
+        color: white;
+        border-color: #20C997FF;
+        margin-right: 20px;
+
+        &:hover {
+          background-color: #12dfa2;
+        }
+      }
+
+      button:last-child {
+        padding: 0 30.5px;
+      }
+    }
+  }
+}
