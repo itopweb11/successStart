@@ -5,7 +5,7 @@ import cover from "../../img/components/profileImg/cover-img1.png";
 import Pros from "../../img/svg/pros";
 import classnames from "classnames";
 import ProfileDescProfile from "./profileDescProfile/profileDescProfile";
-import ProfileDescProps from "./profileDescProps/profileDescProps";
+import ProfileDescProps from "./profileDescBankDetails/profileDescBankDetails";
 import ProfileDescCheck from "./profileDescCheck/profileDescCheck";
 
 const Profile = ({data, menu}) => {

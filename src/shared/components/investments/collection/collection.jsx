@@ -4,18 +4,19 @@ const Collection = () => {
     return(
         <div className='investments__content__collection'>
             <div className='investments__content__collection__item'>
-                <div>
+                <div className='investments__content__collection__item__header'>
                     <p>Наименование проекта 21</p>
                     <p>№101010</p>
                 </div>
-                <div>
+                <div className='investments__content__collection__item__content'>
                     <p>Ставка <span>12 % </span>годовых</p>
                     <p>Срок займа <span>15 мес.</span></p>
                     <p>Рейтинг проекта <span>B</span></p>
                 </div>
-                <div>
+                <div className='investments__content__collection__item__schedule'>
                     <p>Зарезервировано <span>44117 ₽</span> из <span>150000 ₽</span></p>
-                    <div>
+                    <div className='item__schedule'>
+                        <div className='item__scheduleActive'></div>
                         <span></span>
                         <span></span>
                         <span></span>

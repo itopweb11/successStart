@@ -1,7 +1,7 @@
 import React from 'react'
 import IssuedBy from "../../../img/svg/IssuedBy";
 
-const ProfileDescProps = () => {
+const ProfileDescBankDetails = () => {
     return(
         <div className='profileProps'>
             <div className='profileProps__bankDetails'>
@@ -40,4 +40,4 @@ const ProfileDescProps = () => {
     )
 }
 
-export default ProfileDescProps;
+export default ProfileDescBankDetails;

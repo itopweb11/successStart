@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import SeriesNumber from "../../../../img/svg/SeriesNumber";
 import DateBirth from "../../../../img/svg/dateBirth";
 import IssuedBy from "../../../../img/svg/IssuedBy";

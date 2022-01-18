@@ -5,6 +5,9 @@ import {getProfileInclude} from "./helper";
 import Profile from "../../shared/components/profile/profile";
 import MainWrapper from "../../shared/components/wrapperComponents/MainWrapper";
 import Investments from "../../shared/components/investments/investments";
+import YourBag from "../../shared/components/yourBag/yourBag";
+import DocumentationComp from "../../shared/components/documentationComp/documentationComp";
+import YourEvents from "../../shared/components/yourEvents/yourEvents";
 
 const ProfilePage = () => {
     const history = useHistory();
@@ -33,6 +36,9 @@ const ProfilePage = () => {
         switch (activeItem) {
             case 'profile': return <Profile data={data} menu={menu}/>
             case 'invest': return <Investments />
+            case 'briefcase': return <YourBag />
+            case 'documentation': return <DocumentationComp />
+            case 'events': return <YourEvents />
             default: return null
         }
     }

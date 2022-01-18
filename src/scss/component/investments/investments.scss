@@ -81,7 +81,7 @@
           margin-right: 20px;
 
           &:hover {
-            background-color: #12dfa2;
+            background-color: #09e8a7;
           }
         }
 
@@ -161,11 +161,11 @@
           }
         }
 
-        div:first-child {
+        &__header {
           justify-content: space-between;
         }
 
-        div:not(:first-child) {
+        &__content, &__schedule {
           margin-top: 15px;
 
           p {
@@ -173,10 +173,10 @@
           }
         }
 
-        div:last-child {
+        &__schedule {
           align-items: center;
 
-          div {
+          .item__schedule {
             height: 11px;
             margin-top: 2px;
             border-radius: 10px;
@@ -184,10 +184,29 @@
             width: 30%;
             background-color: #d5d7ff;
             margin-right: 50px;
+
+            span {
+              border-right: 1px solid #ffffff;
+              margin-left: 118px;
+              z-index: 2;
+            }
           }
 
           p:first-child {
             margin-right: 20px;
+          }
+
+          .item__scheduleActive {
+            height: 11px;
+            border-radius: 10px;
+            position: absolute;
+            width: 35%;
+            background-color: #20c997;
+            z-index: 1;
+          }
+
+          button {
+            margin-left: 26px;
           }
         }
       }

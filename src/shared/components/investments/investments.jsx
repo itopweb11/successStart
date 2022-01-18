@@ -2,8 +2,10 @@ import React, {useState} from 'react'
 import Accreditation from "../../img/svg/accreditation";
 import Collection from "./collection/collection";
 import CollectionCompleted from "./collectionCompleted/collectionCompleted";
+import {useHistory} from "react-router-dom";
 
 const Investments = () => {
+    const history = useHistory();
     const[investments, setInvestments] = useState(true)
 
     return(
@@ -13,7 +15,7 @@ const Investments = () => {
                 <div className='investments__header__accreditation'>
                     <Accreditation />
                     <p>Для того, чтобы получить доступ к инвестированию, необходимо аккредитовать профиль</p>
-                    <button>Перейти к профилю</button>
+                    <button onClick={() => history.push("/")}>Перейти к профилю</button>
                 </div>
                 <div className='investments__header__check'>
                     <div className='investments__header__check__desc'>
@@ -40,7 +42,7 @@ const Investments = () => {
                 >
                     Сбор инвестиций завершен
                 </span>
-                {investments ?  <Collection /> : <CollectionCompleted />}
+                {investments ? <Collection /> : <CollectionCompleted />}
             </div>
         </div>
     )
