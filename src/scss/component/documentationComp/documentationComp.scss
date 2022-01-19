@@ -2,7 +2,41 @@
   width: 100%;
   background-color: white;
   border-radius: 10px;
-  min-height: 100px;
+  min-height: 800px;
+
+  &__header {
+    label {
+      width: 100%;
+      margin-top: 20px;
+      padding-bottom: 10px;
+
+      tr {
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid #6f75ff;
+        padding: 15px 20px;
+
+        th {
+          width: 29%;
+
+          &:first-child {
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    text-align: center;
+    margin-top: 100px;
+
+    p {
+      font-size: 18px;
+      font-weight: 500;
+      color: #a0a0ff;
+    }
+  }
 }
 
 .documentation__header {
@@ -20,4 +54,40 @@ margin: 20px 0;
   color: #5F63F2FF!important;
   border-bottom: 2px solid  #5F63F2FF;
   font-weight: 500;
+}
+
+.projectDocuments {
+
+  &__content {
+    text-align: center;
+    margin-top: 100px;
+
+    p {
+      font-size: 18px;
+      font-weight: 500;
+      color: #a0a0ff;
+    }
+  }
+
+  th {
+    width: 17%!important;
+  }
+}
+
+.profileDocuments {
+
+  th {
+    width: 15%!important;
+  }
+
+  td {
+    width: 30.89%;
+
+    button {
+      border: none;
+      background-color: white;
+      color: #3a40ff;
+      font-weight: 500;
+    }
+  }
 }

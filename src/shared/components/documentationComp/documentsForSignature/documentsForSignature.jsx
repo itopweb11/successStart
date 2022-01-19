@@ -13,6 +13,9 @@ const DocumentsForSignature = () => {
                     </tr>
                 </label>
             </div>
+            <div className='signature__content'>
+                <p>Файлы отсутствуют</p>
+            </div>
         </div>
     )
 }
