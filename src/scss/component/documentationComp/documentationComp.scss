@@ -1,0 +1,23 @@
+.signature {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  min-height: 100px;
+}
+
+.documentation__header {
+margin: 20px 0;
+
+  span {
+    font-size: 18px;
+    color: #839bff;
+    margin-right: 50px;
+    cursor: pointer;
+  }
+}
+
+.itemActive {
+  color: #5F63F2FF!important;
+  border-bottom: 2px solid  #5F63F2FF;
+  font-weight: 500;
+}

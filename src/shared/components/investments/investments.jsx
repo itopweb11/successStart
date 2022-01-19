@@ -31,13 +31,13 @@ const Investments = () => {
             <div className='investments__content'>
                 <p className='investments__content__title'>Инвестиционные предложения</p>
                 <span
-                    className={investments ? 'investments__content__item' : ''}
+                    className={investments ? 'itemActive' : ''}
                     onClick={() => setInvestments(true)}
                 >
                     Сбор инвестиций
                 </span>
                 <span
-                    className={!investments ? 'investments__content__item' : ''}
+                    className={!investments ? 'itemActive' : ''}
                     onClick={() => setInvestments(false)}
                 >
                     Сбор инвестиций завершен
