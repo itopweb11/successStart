@@ -1,12 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import ProfilePersonalData from "./profilePersonalData/profilePersonalData";
 import ProfilePassportData from "./profilePassportData/profilePassportData";
 
-const ProfileDescProfile = ({data}) => {
+const ProfileDescProfile = ({data, setData}) => {
 
     return(
         <div className='profileDescProfile'>
-            <ProfilePersonalData data={data} />
+            <ProfilePersonalData data={data} setData={setData} />
             <ProfilePassportData data={data} />
         </div>
     )

@@ -9,7 +9,7 @@ import Home from "../../../../img/svg/home";
 import DataForm from "../../../DataForm";
 
 
-const ProfilePersonalData = ({data}) => {
+const ProfilePersonalData = ({data, setData}) => {
     const personalData = data?.legal_form?.personal || {};
 
     const dataFormat = [
@@ -22,7 +22,7 @@ const ProfilePersonalData = ({data}) => {
         {id: 6, key: 'residence_address', label: 'Адрес фактического пребывания', value: personalData?.residence_address, Icon: Home},
     ]
 
-    return <DataForm dataForm={dataFormat} formTitle="Персональные данные" />
+    return <DataForm dataForm={dataFormat} setData={setData} formTitle="Персональные данные" />
 }
 
 export default ProfilePersonalData

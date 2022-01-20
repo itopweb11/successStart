@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from "axios";
-import {logDOM} from "@testing-library/react";
+import {getProfileInclude} from "../../../containers/profilePage/helper";
 
-const DataFormEdit = ({state, setEditFormStatus, dispatch}) => {
+const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
     const stateDataKeys = Object.keys(state.data);
 
     const handleOnChange = event => {
@@ -18,11 +18,11 @@ const DataFormEdit = ({state, setEditFormStatus, dispatch}) => {
         ...state.data,
         address_matches: true,
         ogrnip: "",
-        phone_code: 1234,
+        phone_code: '',
         without_patronymic: true
     }
 
-    console.log(personalData)
+
     const handleOnchangePersonalData = () => {
         axios.put("https://api.investonline.su/api/v1/profiles/outer/personal",
             {...personalData},
@@ -34,10 +34,24 @@ const DataFormEdit = ({state, setEditFormStatus, dispatch}) => {
             )
             .then(function (response) {
                 setEditFormStatus(false)
+                handleOnchangeData()
             })
             .catch(function (error) {
                 console.log(error);
             });
+    }
+
+    const handleOnchangeData = () => {
+        axios.get(`https://api.investonline.su/api/v1/user/profile?include=${getProfileInclude.join(',')}`,
+            {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                    accept: 'application/x.incrowd.v1+json',
+                }
+            },
+        )
+            .then(response => setData(response.data.profile.data))
+            .catch(error => console.log(error))
     }
 
     return (

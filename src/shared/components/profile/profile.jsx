@@ -8,7 +8,7 @@ import ProfileDescProfile from "./profileDescProfile/profileDescProfile";
 import ProfileDescProps from "./profileDescBankDetails/profileDescBankDetails";
 import ProfileDescCheck from "./profileDescCheck/profileDescCheck";
 
-const Profile = ({data, menu}) => {
+const Profile = ({data, setData, menu}) => {
     const [addProfile, setAddProfile] = useState(false)
     const [dataUser, setDataUser] = useState('profile')
 
@@ -29,7 +29,7 @@ const Profile = ({data, menu}) => {
 
     const renderTabContent = () => {
         switch (dataUser) {
-            case 'profile': return <ProfileDescProfile data={data} />
+            case 'profile': return <ProfileDescProfile setData={setData} data={data} />
             case 'props': return <ProfileDescProps />
             default: return <ProfileDescCheck data={data} />
         }
