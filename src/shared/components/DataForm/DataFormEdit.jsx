@@ -23,7 +23,7 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
         without_patronymic: true
     }
 
-
+// Изменяет данные паспорта только после обнавления страницы
     const handleOnchangePersonalData = () => {
         Object.values(state.data).length === 5
         ? axios.put("https://api.investonline.su/api/v1/profiles/outer/passport",
