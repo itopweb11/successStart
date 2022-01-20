@@ -71,9 +71,7 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
                                 type="text"
                                 onChange={handleOnChange}
                             />
-                            {
-                                fieldKey === 'phone' ? <button className='dataFormEdiButton'>изменить</button> : null
-                            }
+                            {fieldKey === 'phone' ? <button className='dataFormEdiButton'>Изменить</button> : null}
                         </div>
                     )
                 })

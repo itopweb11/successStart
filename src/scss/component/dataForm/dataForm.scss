@@ -74,6 +74,7 @@
     padding: 10px 11px;
     border: 1px solid #e3e6ef;
     border-radius: 4px;
+    z-index: 1;
 
     &:hover {
       border-color: #8c94ff;
@@ -98,10 +99,13 @@
 }
 
 .dataFormEdiButton {
-  max-width: 100px;
-  min-height: 40px;
+  min-height: 44px;
   background-color: white;
   border: 1px solid #3a40ff;
   color: #3a40ff;
   border-radius: 4px;
+  z-index: 2;
+  padding: 0 15px;
+  margin-left: -102px;
+  font-weight: 500;
 }
