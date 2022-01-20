@@ -67,7 +67,7 @@
   }
 }
 
-.dataFormEdi__fFields {
+.dataFormEdi__Fields {
   input {
     max-width: 320px;
     width: 100%;
@@ -95,4 +95,13 @@
   span {
     margin-right: 0!important;
   }
+}
+
+.dataFormEdiButton {
+  max-width: 100px;
+  min-height: 40px;
+  background-color: white;
+  border: 1px solid #3a40ff;
+  color: #3a40ff;
+  border-radius: 4px;
 }

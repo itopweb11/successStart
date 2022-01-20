@@ -16,14 +16,22 @@ const DataFormEdit = ({state, setEditFormStatus, dispatch}) => {
 
     const personalData = {
         ...state.data,
-        address_matches: false,
+        address_matches: true,
         ogrnip: "",
-        phone_code: "",
-        without_patronymic: false
+        phone_code: 1234,
+        without_patronymic: true
     }
 
+    console.log(personalData)
     const handleOnchangePersonalData = () => {
-        axios.put("https://api.investonline.su/api/v1/profiles/outer/personal", personalData)
+        axios.put("https://api.investonline.su/api/v1/profiles/outer/personal",
+            {...personalData},
+            {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                }
+            }
+            )
             .then(function (response) {
                 setEditFormStatus(false)
             })
@@ -39,7 +47,7 @@ const DataFormEdit = ({state, setEditFormStatus, dispatch}) => {
                     const Icon = state.dataIcon[fieldKey];
 
                     return (
-                        <div key={fieldKey} className="dataFormEdi__fFields dataFormView__desc">
+                        <div key={fieldKey} className="dataFormEdi__Fields dataFormView__desc">
                             <Icon />
                             <span>{state.fieldDesc[fieldKey]}</span>
                             <input
@@ -49,6 +57,9 @@ const DataFormEdit = ({state, setEditFormStatus, dispatch}) => {
                                 type="text"
                                 onChange={handleOnChange}
                             />
+                            {
+                                fieldKey === 'phone' ? <button className='dataFormEdiButton'>изменить</button> : null
+                            }
                         </div>
                     )
                 })
