@@ -45,6 +45,7 @@
 
     &__desc {
       display: flex;
+      flex-wrap: wrap;
       margin-top: 20px;
       align-items: center;
       border-bottom: 1px solid #bfb8ff;
@@ -108,4 +109,28 @@
   padding: 0 15px;
   margin-left: -102px;
   font-weight: 500;
+}
+
+.preference {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 10px 0 0 16px;
+
+  input {
+    max-width: 22px;
+    min-height: 16px;
+    border: 1px solid #3a40ff;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  label {
+    cursor: pointer;
+    color: #a1a1a1;
+
+    &:hover {
+      color: #3a40ff;
+    }
+  }
 }

@@ -14,7 +14,7 @@ const ProfilePassportData = ({data}) => {
         {id: 1, key: 'issue_date', label: 'Дата выдачи', value: passportFormData.issue_date, Icon: DateBirth},
         {id: 2, key: 'issued_by', label: 'Кем выдан', value: passportFormData.issued_by, Icon: IssuedBy},
         {id: 3, key: 'department_code', label: 'Код подразделения', value: passportFormData.department_code, Icon: EyeIcon},
-        {id: 4, key: 'паспорт', label: 'Сканы паспорта', value: 'паспорт', Icon: Scanner}
+        {id: 4, key: 'files', label: 'Сканы паспорта', value: [101170], Icon: Scanner}
     ]
 
     return <DataForm dataForm={dataFormat} formTitle="Паспортные данные" />

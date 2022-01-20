@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 import {getProfileInclude} from "../../../containers/profilePage/helper";
 
 const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
     const stateDataKeys = Object.keys(state.data);
 
+    console.log(Object.values(state.data).length)
     const handleOnChange = event => {
         dispatch({
             payload: {
@@ -24,21 +25,37 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
 
 
     const handleOnchangePersonalData = () => {
-        axios.put("https://api.investonline.su/api/v1/profiles/outer/personal",
+        Object.values(state.data).length === 5
+        ? axios.put("https://api.investonline.su/api/v1/profiles/outer/passport",
+                {...state.data},
+                {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                    }
+                }
+            )
+                .then(function (response) {
+                    handleOnchangeData()
+                    setEditFormStatus(false)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        :  axios.put("https://api.investonline.su/api/v1/profiles/outer/personal",
             {...personalData},
             {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 }
             }
-            )
+        )
             .then(function (response) {
-                setEditFormStatus(false)
                 handleOnchangeData()
+                setEditFormStatus(false)
             })
             .catch(function (error) {
                 console.log(error);
-            });
+            })
     }
 
     const handleOnchangeData = () => {
@@ -72,6 +89,14 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
                                 onChange={handleOnChange}
                             />
                             {fieldKey === 'phone' ? <button className='dataFormEdiButton'>Изменить</button> : null}
+                            {
+                                fieldKey === 'residence_address'
+                                ? <div className="preference">
+                                        <input type="checkbox" name="cheese" id="cheese"/>
+                                        <label htmlFor="cheese">Совпадает с адресом регистрации</label>
+                                    </div>
+                                    : null
+                            }
                         </div>
                     )
                 })
