@@ -49,7 +49,7 @@ const MainWrapperHeader = ({data}) => {
                     <div className='mainWrapperHeader__buttonMail_desc'>
                         <div
                             className={emailIcon}
-                            onClick={() => email ? setEmail(false) : setEmail(true)}
+                            onClick={() => email ? setEmail(false) && setButtonMail(false) : setEmail(true)}
                         >
                             <EmailIcon />
                         </div>

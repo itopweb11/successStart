@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from "axios";
+import {logDOM} from "@testing-library/react";
 
 const DataFormEdit = ({state, setEditFormStatus, dispatch}) => {
     const stateDataKeys = Object.keys(state.data);
@@ -10,6 +12,24 @@ const DataFormEdit = ({state, setEditFormStatus, dispatch}) => {
                 value: event.target.value
             }
         })
+    }
+
+    const personalData = {
+        ...state.data,
+        address_matches: false,
+        ogrnip: "",
+        phone_code: "",
+        without_patronymic: false
+    }
+
+    const handleOnchangePersonalData = () => {
+        axios.put("https://api.investonline.su/api/v1/profiles/outer/personal", personalData)
+            .then(function (response) {
+                setEditFormStatus(false)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     return (
@@ -35,7 +55,7 @@ const DataFormEdit = ({state, setEditFormStatus, dispatch}) => {
             }
             <div className='dataFormView__editButton'>
                 <button
-                    onClick={() => setEditFormStatus(false)}
+                    onClick={handleOnchangePersonalData}
                     disabled={!!state.errorFields.length}
                 >
                     сохранить
