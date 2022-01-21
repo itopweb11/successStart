@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import {getProfileInclude} from "../../../containers/profilePage/helper";
 
-const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
+const DataFormEdit = ({state, bankDetails, setData, setEditFormStatus, dispatch}) => {
     const stateDataKeys = Object.keys(state.data);
 
     console.log(Object.values(state.data).length)
@@ -23,39 +23,60 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
         without_patronymic: true
     }
 
-// Изменяет данные паспорта только после обнавления страницы
     const handleOnchangePersonalData = () => {
-        Object.values(state.data).length === 5
-        ? axios.put("https://api.investonline.su/api/v1/profiles/outer/passport",
-                {...state.data},
-                {
-                    headers: {
-                        authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        switch (Object.values(state.data).length){
+            case 5: return (
+                axios.put("https://api.investonline.su/api/v1/profiles/outer/passport",
+                    {...state.data},
+                    {
+                        headers: {
+                            authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                        }
                     }
-                }
+                )
+                    .then(function (response) {
+                        handleOnchangeData()
+                        setEditFormStatus(false)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
             )
-                .then(function (response) {
-                    handleOnchangeData()
-                    setEditFormStatus(false)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-        :  axios.put("https://api.investonline.su/api/v1/profiles/outer/personal",
-            {...personalData},
-            {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                }
-            }
-        )
-            .then(function (response) {
-                handleOnchangeData()
-                setEditFormStatus(false)
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
+            case 7: return (
+                axios.put("https://api.investonline.su/api/v1/profiles/outer/personal",
+                    {...personalData},
+                    {
+                        headers: {
+                            authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                        }
+                    }
+                )
+                    .then(function (response) {
+                        handleOnchangeData()
+                        setEditFormStatus(false)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+            )
+            default: return (
+                axios.put("https://api.investonline.su/api/v1/profiles/outer/bank-detail/101050",
+                    {...bankDetails},
+                    {
+                        headers: {
+                            authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                        }
+                    }
+                )
+                    .then(function (response) {
+                        handleOnchangeData()
+                        setEditFormStatus(false)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+            )
+        }
     }
 
     const handleOnchangeData = () => {
