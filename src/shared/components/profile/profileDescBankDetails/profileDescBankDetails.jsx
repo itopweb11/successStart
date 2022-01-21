@@ -1,7 +1,22 @@
 import React from 'react'
 import IssuedBy from "../../../img/svg/IssuedBy";
+import SeriesNumber from "../../../img/svg/SeriesNumber";
+import DateBirth from "../../../img/svg/dateBirth";
+import EyeIcon from "../../../img/svg/EyeIcon";
+import Scanner from "../../../img/svg/scanner";
 
-const ProfileDescBankDetails = () => {
+const ProfileDescBankDetails = ({data}) => {
+    const bankDetails = data?.bank_details[0];
+    console.log(bankDetails)
+
+    const dataFormat = [
+        {id: 0, key: 'name', label: 'Наименование банка или БИК', value: bankDetails.name, Icon: IssuedBy},
+        {id: 1, key: 'bik', label: 'БИК', value: bankDetails.bik, Icon: IssuedBy},
+        {id: 2, key: 'inn', label: 'ИНН банка', value: bankDetails.inn, Icon: IssuedBy},
+        {id: 3, key: 'correspondent_account', label: 'Корр. счет', value: bankDetails.correspondent_account, Icon: IssuedBy},
+        {id: 4, key: 'checking_account', label: 'Расчетный счет', value: bankDetails.checking_account, Icon: IssuedBy}
+    ]
+
     return(
         <div className='profileProps'>
             <div className='profileProps__bankDetails'>
