@@ -1,18 +1,8 @@
-.profileProps {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+.profileDescBankDetails {
+
 }
 
-.profileProps__bankDetails {
-  width: 48%;
-  padding: 20px 0;
-  height: 436px;
-  background-color: white;
-  border-radius: 10px;
-}
-
-.profileProps__info {
+.profileDescBankDetails__info {
   width: 50%;
   height: 108px;
   padding: 20px 0;
@@ -27,36 +17,10 @@
   }
 }
 
-.profileProps__bankDetails__item {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-  border-bottom: 1px solid #bfb8ff;
-  padding-bottom: 5px;
-
-  & span:nth-child(2) {
-    max-width: 180px;
-    width: 100%;
-    display: block;
-    line-height: 1;
-    margin: 0 60px 0 10px;
-    color: #5F63F2FF;
-  }
-
-  svg {
-    color: #5F63F2FF;
-    margin-left: 20px;
-  }
-}
-
-.profileProps__title {
-  font-size: 20px;
+.profileDescBankDetails__title {
+  font-size: 16px;
   font-family: sans-serif;
   letter-spacing: 1px;
   margin-left: 20px;
-}
-
-.profileProps__info__title {
   color: #5F63F2FF;
-  font-size: 16px;
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from "axios";
 import {getProfileInclude} from "../../../containers/profilePage/helper";
 
@@ -76,6 +76,7 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
             {
                 stateDataKeys.map(fieldKey => {
                     const Icon = state.dataIcon[fieldKey];
+                    console.log(fieldKey)
 
                     return (
                         <div key={fieldKey} className="dataFormEdi__Fields dataFormView__desc">
