@@ -2,10 +2,9 @@ import React from 'react';
 import axios from "axios";
 import {getProfileInclude} from "../../../containers/profilePage/helper";
 
-const DataFormEdit = ({state, bankDetails, setData, setEditFormStatus, dispatch}) => {
+const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
     const stateDataKeys = Object.keys(state.data);
 
-    console.log(Object.values(state.data).length)
     const handleOnChange = event => {
         dispatch({
             payload: {
@@ -31,6 +30,7 @@ const DataFormEdit = ({state, bankDetails, setData, setEditFormStatus, dispatch}
                     {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                            accept: 'application/x.incrowd.v1+json',
                         }
                     }
                 )
@@ -48,6 +48,7 @@ const DataFormEdit = ({state, bankDetails, setData, setEditFormStatus, dispatch}
                     {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                            accept: 'application/x.incrowd.v1+json',
                         }
                     }
                 )
@@ -61,10 +62,11 @@ const DataFormEdit = ({state, bankDetails, setData, setEditFormStatus, dispatch}
             )
             default: return (
                 axios.put("https://api.investonline.su/api/v1/profiles/outer/bank-detail/101050",
-                    {...bankDetails},
+                    {...state.data},
                     {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                            accept: 'application/x.incrowd.v1+json',
                         }
                     }
                 )
@@ -97,7 +99,6 @@ const DataFormEdit = ({state, bankDetails, setData, setEditFormStatus, dispatch}
             {
                 stateDataKeys.map(fieldKey => {
                     const Icon = state.dataIcon[fieldKey];
-                    console.log(fieldKey)
 
                     return (
                         <div key={fieldKey} className="dataFormEdi__Fields dataFormView__desc">
