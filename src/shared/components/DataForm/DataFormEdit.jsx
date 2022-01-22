@@ -13,6 +13,7 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
             }
         })
     }
+    console.log(Object.keys(state.data)[1])
 
     const personalData = {
         ...state.data,
@@ -23,8 +24,8 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
     }
 
     const handleOnchangePersonalData = () => {
-        switch (Object.values(state.data).length){
-            case 5: return (
+        switch (Object.keys(state.data)[1]){
+            case 'issue_date': return (
                 axios.put("https://api.investonline.su/api/v1/profiles/outer/passport",
                     {...state.data},
                     {
@@ -42,7 +43,7 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
                         console.log(error);
                     })
             )
-            case 7: return (
+            case 'birth_date': return (
                 axios.put("https://api.investonline.su/api/v1/profiles/outer/personal",
                     {...personalData},
                     {
@@ -60,8 +61,8 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
                         console.log(error);
                     })
             )
-            default: return (
-                axios.put("https://api.investonline.su/api/v1/profiles/outer/bank-detail/101050",
+            case 'bik': return (
+                axios.put("https://api.investonline.su/api/v1/bank-detail/101050",
                     {...state.data},
                     {
                         headers: {
@@ -78,6 +79,7 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
                         console.log(error);
                     })
             )
+            default: return null
         }
     }
 
