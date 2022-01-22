@@ -22,7 +22,7 @@ const ProfilePersonalData = ({data, setData}) => {
         {id: 6, key: 'residence_address', label: 'Адрес фактического пребывания', value: personalData?.residence_address, Icon: Home},
     ]
 
-    return <DataForm dataForm={dataFormat} setData={setData} formTitle="Персональные данные" />
+    return <DataForm data={data} dataForm={dataFormat} setData={setData} formTitle="Персональные данные" />
 }
 
 export default ProfilePersonalData

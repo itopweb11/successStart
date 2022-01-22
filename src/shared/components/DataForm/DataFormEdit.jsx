@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import {getProfileInclude} from "../../../containers/profilePage/helper";
 
-const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
+const DataFormEdit = ({state, data, setData, setEditFormStatus, dispatch}) => {
     const stateDataKeys = Object.keys(state.data);
 
     const handleOnChange = event => {
@@ -13,7 +13,6 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
             }
         })
     }
-    console.log(Object.keys(state.data)[1])
 
     const personalData = {
         ...state.data,
@@ -62,7 +61,7 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
                     })
             )
             case 'bik': return (
-                axios.put("https://api.investonline.su/api/v1/bank-detail/101050",
+                axios.put("https://api.investonline.su/api/v1/bank-detail/101015",
                     {...state.data},
                     {
                         headers: {
@@ -92,7 +91,9 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
                 }
             },
         )
-            .then(response => setData(response.data.profile.data))
+            .then(function(response ) {
+                setData(response.data.profile.data)
+            })
             .catch(error => console.log(error))
     }
 

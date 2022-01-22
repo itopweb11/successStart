@@ -3,7 +3,7 @@ import {reducer, init} from './helpers';
 import DataFormEdit from "./DataFormEdit";
 import DataFormView from "./DataFormView";
 
-const DataForm = ({dataForm, setData, formTitle}) => {
+const DataForm = ({dataForm, setData, data, formTitle}) => {
     const [editFormStatus, setEditFormStatus] = useState(false);
     const [state, dispatch] = useReducer(reducer, dataForm, init);
 
@@ -12,7 +12,7 @@ const DataForm = ({dataForm, setData, formTitle}) => {
             <p className='dataForm__title'>{formTitle}</p>
             {
                 editFormStatus
-                    ? <DataFormEdit state={state} setData={setData} setEditFormStatus={setEditFormStatus} dispatch={dispatch}/>
+                    ? <DataFormEdit state={state} data={data} setData={setData} setEditFormStatus={setEditFormStatus} dispatch={dispatch}/>
                     : <DataFormView data={dataForm} setEditFormStatus={setEditFormStatus} />
             }
         </div>
