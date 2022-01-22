@@ -1,10 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {getProfileInclude} from "../../../containers/profilePage/helper";
 
 const DataFormEdit = ({state, data, setData, setEditFormStatus, dispatch}) => {
-    const stateDataKeys = Object.keys(state.data);
-
     const handleOnChange = event => {
         dispatch({
             payload: {
@@ -13,6 +11,19 @@ const DataFormEdit = ({state, data, setData, setEditFormStatus, dispatch}) => {
             }
         })
     }
+
+    const stateDataKeys = Object.keys(state.data);
+    const[key, setKey] = useState('')
+
+    useEffect(() => {
+        switch (Object.keys(state.data)[1]) {
+            case 'issue_date': return setKey("https://api.investonline.su/api/v1/profiles/outer/passport");
+            case 'birth_date': return setKey("https://api.investonline.su/api/v1/profiles/outer/personal");
+            case 'bik': return setKey("https://api.investonline.su/api/v1/bank-detail/101015");
+            default: return null
+        }
+
+    },[]);
 
     const personalData = {
         ...state.data,
@@ -23,63 +34,22 @@ const DataFormEdit = ({state, data, setData, setEditFormStatus, dispatch}) => {
     }
 
     const handleOnchangePersonalData = () => {
-        switch (Object.keys(state.data)[1]){
-            case 'issue_date': return (
-                axios.put("https://api.investonline.su/api/v1/profiles/outer/passport",
-                    {...state.data},
-                    {
-                        headers: {
-                            authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                            accept: 'application/x.incrowd.v1+json',
-                        }
-                    }
-                )
-                    .then(function (response) {
-                        handleOnchangeData()
-                        setEditFormStatus(false)
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
-            )
-            case 'birth_date': return (
-                axios.put("https://api.investonline.su/api/v1/profiles/outer/personal",
-                    {...personalData},
-                    {
-                        headers: {
-                            authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                            accept: 'application/x.incrowd.v1+json',
-                        }
-                    }
-                )
-                    .then(function (response) {
-                        handleOnchangeData()
-                        setEditFormStatus(false)
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
-            )
-            case 'bik': return (
-                axios.put("https://api.investonline.su/api/v1/bank-detail/101015",
-                    {...state.data},
-                    {
-                        headers: {
-                            authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                            accept: 'application/x.incrowd.v1+json',
-                        }
-                    }
-                )
-                    .then(function (response) {
-                        handleOnchangeData()
-                        setEditFormStatus(false)
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
-            )
-            default: return null
-        }
+        axios.put(key,
+            Object.keys(state.data)[1] === 'birth_date' ? {...personalData} : {...state.data},
+            {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                    accept: 'application/x.incrowd.v1+json',
+                }
+            }
+        )
+            .then(function (response) {
+                handleOnchangeData()
+                setEditFormStatus(false)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 
     const handleOnchangeData = () => {
