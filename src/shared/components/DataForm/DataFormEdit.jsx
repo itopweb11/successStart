@@ -98,10 +98,7 @@ const DataFormEdit = ({state, data, setData, setEditFormStatus, dispatch}) => {
                 })
             }
             <div className='dataFormView__editButton'>
-                <button
-                    onClick={handleOnchangePersonalData}
-                    disabled={!!state.errorFields.length}
-                >
+                <button onClick={handleOnchangePersonalData} disabled={!!state.errorFields.length}>
                     сохранить
                 </button>
             </div>

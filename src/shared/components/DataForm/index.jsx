@@ -17,7 +17,6 @@ const DataForm = ({dataForm, setData, data, formTitle}) => {
             }
         </div>
     )
-
 }
 
 export default DataForm;
