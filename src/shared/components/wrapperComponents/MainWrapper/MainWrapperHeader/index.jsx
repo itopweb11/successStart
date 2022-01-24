@@ -40,6 +40,12 @@ const MainWrapperHeader = ({data, setActiveItem}) => {
             setButtonMail(false)
         } else setEmail(true)
     }
+
+    const onClickProfile = () => {
+        setActiveItem('profile')
+        setEmail(false)
+        setButtonMail(false)
+    }
     return (
         <div className='mainWrapperHeader'>
             <div className={profileHeaders}>
@@ -83,7 +89,7 @@ const MainWrapperHeader = ({data, setActiveItem}) => {
                         </div>
                         <div className='header__accountSettings_buttons'>
                             <button onClick={transitionEntrance}>Выйти</button>
-                            <button onClick={() => setActiveItem('profile')}>Аккаунт</button>
+                            <button onClick={onClickProfile}>Аккаунт</button>
                         </div>
                     </div>
                 </div>
