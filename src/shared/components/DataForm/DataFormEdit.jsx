@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {getProfileInclude} from "../../../containers/profilePage/helper";
 
-const DataFormEdit = ({state, data, setData, setEditFormStatus, dispatch}) => {
+const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
     const handleOnChange = event => {
         dispatch({
             payload: {

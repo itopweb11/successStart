@@ -6,7 +6,7 @@ import EyeIcon from "../../../../img/svg/EyeIcon";
 import Scanner from "../../../../img/svg/scanner";
 import DataForm from "../../../DataForm";
 
-const ProfilePassportData = ({data}) => {
+const ProfilePassportData = ({data, setData}) => {
     const passportFormData = data?.legal_form?.passport || {};
 
     const dataFormat = [
@@ -17,7 +17,7 @@ const ProfilePassportData = ({data}) => {
         {id: 4, key: 'files', label: 'Сканы паспорта', value: [101170], Icon: Scanner}
     ]
 
-    return <DataForm dataForm={dataFormat} formTitle="Паспортные данные" />
+    return <DataForm dataForm={dataFormat} setData={setData} formTitle="Паспортные данные" />
 }
 
 export default ProfilePassportData;

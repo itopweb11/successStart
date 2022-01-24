@@ -7,7 +7,7 @@ const ProfileDescProfile = ({data, setData}) => {
     return(
         <div className='profileDescProfile'>
             <ProfilePersonalData data={data} setData={setData} />
-            <ProfilePassportData data={data} />
+            <ProfilePassportData data={data} setData={setData}/>
         </div>
     )
 }
