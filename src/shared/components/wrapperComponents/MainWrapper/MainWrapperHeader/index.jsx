@@ -7,7 +7,7 @@ import Settings from "../../../../img/svg/settings";
 import {useHistory} from "react-router-dom";
 import classnames from "classnames";
 
-const MainWrapperHeader = ({data}) => {
+const MainWrapperHeader = ({data, setActiveItem}) => {
     const history = useHistory();
     const [buttonMail, setButtonMail] = useState(false)
     const [balance, setBalance] = useState(false)
@@ -28,7 +28,18 @@ const MainWrapperHeader = ({data}) => {
         'accountActive': email && buttonMail
     })
 
-    const transitionEntrance = () => {history.push("/login");}
+    const transitionEntrance = () => {
+        setEmail(false)
+        setButtonMail(false)
+        history.push("/login")
+    }
+
+    const onClickEmail = () => {
+        if(email) {
+            setEmail(false)
+            setButtonMail(false)
+        } else setEmail(true)
+    }
     return (
         <div className='mainWrapperHeader'>
             <div className={profileHeaders}>
@@ -49,7 +60,7 @@ const MainWrapperHeader = ({data}) => {
                     <div className='mainWrapperHeader__buttonMail_desc'>
                         <div
                             className={emailIcon}
-                            onClick={() => email ? setEmail(false) && setButtonMail(false) : setEmail(true)}
+                            onClick={onClickEmail}
                         >
                             <EmailIcon />
                         </div>
@@ -72,7 +83,7 @@ const MainWrapperHeader = ({data}) => {
                         </div>
                         <div className='header__accountSettings_buttons'>
                             <button onClick={transitionEntrance}>Выйти</button>
-                            <button>Аккаунт</button>
+                            <button onClick={() => setActiveItem('profile')}>Аккаунт</button>
                         </div>
                     </div>
                 </div>
