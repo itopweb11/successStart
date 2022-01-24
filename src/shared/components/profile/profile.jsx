@@ -30,7 +30,7 @@ const Profile = ({data, setData, menu}) => {
     const renderTabContent = () => {
         switch (dataUser) {
             case 'profile': return <ProfileDescProfile setData={setData} data={data} />
-            case 'props': return <ProfileDescBankDetails  data={data} />
+            case 'props': return <ProfileDescBankDetails  data={data} setData={setData} />
             default: return <ProfileDescCheck data={data} />
         }
     }
