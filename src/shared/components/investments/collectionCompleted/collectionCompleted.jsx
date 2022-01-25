@@ -1,14 +1,26 @@
-import React from 'react'
+import React, {useState} from 'react'
 import FileSearch from "../../../img/svg/fileSearch";
 
 const CollectionCompleted = () => {
+    const[b, setB] = useState(true)
     return(
-        <div className='investments__content__collectionCompleted'>
-            <div>
-                <FileSearch />
-                <p>Пока на платформе нет доступных проектов</p>
+        <div>
+            {b
+            ?<div className='investments__content__collectionCompleted'>
+                <div>
+                    <FileSearch />
+                    <p>Пока на платформе нет доступных проектов</p>
+                </div>
+                <button onClick={() => setB(false)}>Оповестить, когда проекты появятся</button>
             </div>
-            <button>Оповестить, когда проекты появятся</button>
+            :<div className='investments__content__collectionCompleted'>
+                <div>
+                    <FileSearch />
+                    <p>Email-уведомления о новых проектах включены. Мы пришлем информацию, когда проекты появятся</p>
+                </div>
+                <button  onClick={() => setB(true)}>Выключить уведомления</button>
+            </div>
+            }
         </div>
     )
 }

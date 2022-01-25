@@ -8,7 +8,7 @@ const Investments = ({setActiveItem}) => {
     const history = useHistory();
     const[investments, setInvestments] = useState(true)
 
-    const a = () => {
+    const GoToProfile = () => {
         history.push("/")
         setActiveItem('profile')
     }
@@ -20,7 +20,7 @@ const Investments = ({setActiveItem}) => {
                 <div className='investments__header__accreditation'>
                     <Accreditation />
                     <p>Для того, чтобы получить доступ к инвестированию, необходимо аккредитовать профиль</p>
-                    <button onClick={a}>Перейти к профилю</button>
+                    <button onClick={GoToProfile}>Перейти к профилю</button>
                 </div>
                 <div className='investments__header__check'>
                     <div className='investments__header__check__desc'>
