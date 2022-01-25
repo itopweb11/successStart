@@ -8,6 +8,11 @@ const Investments = () => {
     const history = useHistory();
     const[investments, setInvestments] = useState(true)
 
+    const a = () => {
+        history.push("/")
+
+    }
+
     return(
         <div className='investments'>
             <h3>Инвестиции</h3>
@@ -15,7 +20,7 @@ const Investments = () => {
                 <div className='investments__header__accreditation'>
                     <Accreditation />
                     <p>Для того, чтобы получить доступ к инвестированию, необходимо аккредитовать профиль</p>
-                    <button onClick={() => history.push("/")}>Перейти к профилю</button>
+                    <button onClick={a}>Перейти к профилю</button>
                 </div>
                 <div className='investments__header__check'>
                     <div className='investments__header__check__desc'>
