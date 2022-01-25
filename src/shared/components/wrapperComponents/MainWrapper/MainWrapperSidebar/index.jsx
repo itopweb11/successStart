@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Menu from "../../../../img/svg/menu";
 import LogoDark from "../../../../img/components/profileImg/LogoDark.svg";
 import User from "../../../../img/svg/user";

@@ -35,7 +35,7 @@ const ProfilePage = () => {
     const content = () => {
         switch (activeItem) {
             case 'profile': return <Profile data={data} setData={setData} menu={menu}/>
-            case 'invest': return <Investments />
+            case 'invest': return <Investments setActiveItem={setActiveItem}/>
             case 'briefcase': return <YourBag />
             case 'documentation': return <DocumentationComp />
             case 'events': return <YourEvents />

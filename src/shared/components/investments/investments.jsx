@@ -4,13 +4,13 @@ import Collection from "./collection/collection";
 import CollectionCompleted from "./collectionCompleted/collectionCompleted";
 import {useHistory} from "react-router-dom";
 
-const Investments = () => {
+const Investments = ({setActiveItem}) => {
     const history = useHistory();
     const[investments, setInvestments] = useState(true)
 
     const a = () => {
         history.push("/")
-
+        setActiveItem('profile')
     }
 
     return(
