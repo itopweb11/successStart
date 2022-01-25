@@ -1,24 +1,25 @@
 import React, {useState} from 'react'
 import FileSearch from "../../../img/svg/fileSearch";
+import Notification from "../../../img/svg/notification";
 
 const CollectionCompleted = () => {
-    const[b, setB] = useState(true)
+    const[notify, setNotify] = useState(true)
     return(
         <div>
-            {b
+            {notify
             ?<div className='investments__content__collectionCompleted'>
                 <div>
                     <FileSearch />
                     <p>Пока на платформе нет доступных проектов</p>
                 </div>
-                <button onClick={() => setB(false)}>Оповестить, когда проекты появятся</button>
+                <button onClick={() => setNotify(false)}>Оповестить, когда проекты появятся</button>
             </div>
             :<div className='investments__content__collectionCompleted'>
                 <div>
-                    <FileSearch />
+                    <Notification />
                     <p>Email-уведомления о новых проектах включены. Мы пришлем информацию, когда проекты появятся</p>
                 </div>
-                <button  onClick={() => setB(true)}>Выключить уведомления</button>
+                <button  onClick={() => setNotify(true)}>Выключить уведомления</button>
             </div>
             }
         </div>

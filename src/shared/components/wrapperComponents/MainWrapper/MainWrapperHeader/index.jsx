@@ -60,7 +60,7 @@ const MainWrapperHeader = ({data, setActiveItem}) => {
                     <div className='mainWrapperHeader__notification__desc'>
                         <span>10</span>
                     </div>
-                    <Notification/>
+                    <Notification />
                 </div>
                 <div className='mainWrapperHeader__buttonMail'>
                     <div className='mainWrapperHeader__buttonMail_desc'>
