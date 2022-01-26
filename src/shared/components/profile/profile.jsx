@@ -57,7 +57,6 @@ const Profile = ({data, setData, menu}) => {
                             alt="vector"
                         />
                     </div>
-                    <span className='profile__user__line'></span>
                     <div className={navbarButton}>
                         <button>
                             <div className='profile__user__buttonPros'>
