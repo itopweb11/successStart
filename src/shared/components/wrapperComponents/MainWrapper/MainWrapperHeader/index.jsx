@@ -6,6 +6,7 @@ import vector from "../../../../img/components/profileImg/Vector1.png";
 import Settings from "../../../../img/svg/settings";
 import {useHistory} from "react-router-dom";
 import classnames from "classnames";
+import Search from "../../../../img/svg/search";
 
 const MainWrapperHeader = ({data, setActiveItem}) => {
     const history = useHistory();
@@ -48,6 +49,13 @@ const MainWrapperHeader = ({data, setActiveItem}) => {
     }
     return (
         <div className='mainWrapperHeader'>
+            <div>
+                <Search />
+                <input
+                    type="text"
+                    placeholder='search...'
+                />
+            </div>
             <div className={profileHeaders}>
                 <div className='mainWrapperHeader__balance'>
                     <div onClick={()=> balance ? setBalance(false) : setBalance(true)}
