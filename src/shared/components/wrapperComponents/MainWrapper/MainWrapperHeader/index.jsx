@@ -49,7 +49,7 @@ const MainWrapperHeader = ({data, setActiveItem}) => {
     }
     return (
         <div className='mainWrapperHeader'>
-            <div>
+            <div className='mainWrapperHeader__search'>
                 <Search />
                 <input
                     type="text"

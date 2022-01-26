@@ -7,6 +7,21 @@
   padding: 0 20px;
 }
 
+.mainWrapperHeader__search {
+  margin-left: 20px;
+
+  input {
+    border: none;
+    width: 100px;
+    margin-left: 10px;
+    outline: none;
+
+    &::placeholder {
+      color: #b3b3b3;
+    }
+  }
+}
+
 .mainWrapperHeader__desc {
   display: flex;
   align-items: center;
