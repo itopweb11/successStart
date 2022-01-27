@@ -57,10 +57,6 @@
     display: flex;
     align-items: center;
     margin-top: 30px;
-
-    &:hover {
-      border-bottom: 1px solid #3a40ff;
-    }
   }
 
   p {
@@ -69,10 +65,18 @@
     transition: 1s;
     margin-left: 15px;
     opacity: 1;
+
+    &:hover {
+      color: #3a40ff;
+    }
   }
 
   svg {
     color: rgb(146, 153, 184);
+
+    &:hover {
+      color: #3a40ff;
+    }
   }
 
   a {
