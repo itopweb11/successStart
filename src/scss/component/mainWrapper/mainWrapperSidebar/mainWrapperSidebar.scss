@@ -58,12 +58,8 @@
     align-items: center;
     margin-top: 30px;
 
-    p:hover {
-      color: #3a40ff;
-    }
-
-    svg:hover {
-      color: #3a40ff;
+    &:hover {
+      border-bottom: 1px solid #3a40ff;
     }
   }
 
