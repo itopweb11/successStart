@@ -65,9 +65,7 @@ const MainWrapperHeader = ({data, setActiveItem}) => {
                     <p className={balance ? 'balanceActive' : 'balanceActiveNon'}><span>Баланс:</span>90 000 000,00 ₽</p>
                 </div>
                 <div className='mainWrapperHeader__notification'>
-                    <div className='mainWrapperHeader__notification__desc'>
-                        <span>10</span>
-                    </div>
+                    <div className='notificationPoint'></div>
                     <Notification />
                 </div>
                 <div className='mainWrapperHeader__buttonMail'>
@@ -76,6 +74,8 @@ const MainWrapperHeader = ({data, setActiveItem}) => {
                             className={emailIcon}
                             onClick={onClickEmail}
                         >
+                            {!email ? <div className='emailPoint'></div> : null}
+
                             <EmailIcon />
                         </div>
                         <span

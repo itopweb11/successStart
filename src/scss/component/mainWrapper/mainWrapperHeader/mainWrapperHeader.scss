@@ -50,6 +50,7 @@
 
     svg {
       font-size: 20px;
+      margin-top: 6px;
     }
   }
 
@@ -85,21 +86,8 @@
 
   svg {
     font-size: 23px;
-    margin-top: -14px;
-    margin-left: 14px;
+    margin:0 5px 0 14px;
   }
-}
-
-.mainWrapperHeader__notification__desc {
-  width: 25px;
-  height: 18px;
-  background-color: #5f63f2;
-  color: white;
-  border-radius: 41%;
-  font-size: 12px;
-  text-align: center;
-  font-weight: 500;
-  position: relative;
 }
 
 .mainWrapperHeader__buttonMail {
@@ -236,4 +224,22 @@
     background-color: #5f63f2;
     color: white;
   }
+}
+
+.emailPoint {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #3a40ff;
+  margin-left: 6px;
+  margin-bottom: -2px;
+}
+
+.notificationPoint {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #fc3104;
+  margin-left: 8.8px;
+  margin-bottom: 2px;
 }
