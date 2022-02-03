@@ -27,9 +27,9 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
 
     const personalData = {
         ...state.data,
-        address_matches: true,
+        address_matches: "",
         ogrnip: "",
-        phone_code: '',
+        phone_code: "",
         without_patronymic: true
     }
 
@@ -49,6 +49,7 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
             })
             .catch(function (error) {
                 console.log(error);
+                console.log(personalData);
             })
     }
 
