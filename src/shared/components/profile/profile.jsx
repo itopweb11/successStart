@@ -80,11 +80,11 @@ const Profile = ({data, setData, menu}) => {
                             {dataUser === 'profile' ? <div className='userTabLine'/> : null}
                         </span>
                         <span
-                            onClick={() => setDataUser('props')}
-                            className={dataUser === 'props' ? 'user__tabTextActive' : null}
+                            onClick={() => setDataUser('requisites')}
+                            className={dataUser === 'requisites' ? 'user__tabTextActive' : null}
                         >
                             Банковские реквизиты
-                            {dataUser === 'props' ? <div className='userTabLine'/> : null}
+                            {dataUser === 'requisites' ? <div className='userTabLine'/> : null}
                         </span>
                         <span
                             onClick={() => setDataUser('check')}
