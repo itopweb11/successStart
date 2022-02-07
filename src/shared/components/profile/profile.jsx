@@ -97,6 +97,7 @@ const Profile = ({data, setData, menu}) => {
                     <div className='profile__user__desc'>
                         {renderTabContent()}
                     </div>
+
                 </div>
             </div>
         </div>

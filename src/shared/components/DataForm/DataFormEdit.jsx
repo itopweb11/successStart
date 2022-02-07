@@ -49,7 +49,6 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
             })
             .catch(function (error) {
                 console.log(error);
-                console.log(personalData);
             })
     }
 
