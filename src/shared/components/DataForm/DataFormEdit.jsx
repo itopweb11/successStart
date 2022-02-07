@@ -11,7 +11,7 @@ const DataFormEdit = ({state, setData, setEditFormStatus, dispatch}) => {
             }
         })
     }
-    console.log(state)
+
     const stateDataKeys = Object.keys(state.data);
     const[key, setKey] = useState('')
 
