@@ -2,10 +2,19 @@
 
   &__addProject {
     width: 100%;
-    min-height: 100px;
+    padding: 20px;
     background-color: white;
     border-radius: 10px;
     display: flex;
+    justify-content: space-between;
+
+    button {
+      min-height: 45px;
+      padding: 0 20px;
+      border-radius: 5px;
+      background-color: #20c997;
+      color: white;
+    }
   }
 
 }
