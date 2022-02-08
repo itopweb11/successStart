@@ -8,6 +8,7 @@ import Investments from "../../shared/components/investments/investments";
 import YourBag from "../../shared/components/yourBag/yourBag";
 import DocumentationComp from "../../shared/components/documentationComp/documentationComp";
 import YourEvents from "../../shared/components/yourEvents/yourEvents";
+import ProjectFeed from "../../shared/components/projectFeed/ProjectFeed";
 
 const ProfilePage = () => {
     const history = useHistory();
@@ -39,6 +40,7 @@ const ProfilePage = () => {
             case 'briefcase': return <YourBag />
             case 'documentation': return <DocumentationComp />
             case 'events': return <YourEvents />
+            case 'projectFeed': return <ProjectFeed />
             default: return null
         }
     }

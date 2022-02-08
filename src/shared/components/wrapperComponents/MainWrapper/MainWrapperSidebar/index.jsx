@@ -52,6 +52,12 @@ const MainWrapperSidebar = ({menu, setMenu, activeItem, setActiveItem}) => {
                             <p className={menu ? 'mainWrapperSidebarMenuText' : null}>Ваши события</p>
                         </li>
                     </a>
+                    <a href="#" onClick={() => setActiveItem('projectFeed')}>
+                        <li className={activeItem === 'projectFeed' ? 'sidebarItemActive' : null}>
+                            <Grid/>
+                            <p className={menu ? 'mainWrapperSidebarMenuText' : null}>Лента проектов</p>
+                        </li>
+                    </a>
                 </ul>
             </div>
         </div>
