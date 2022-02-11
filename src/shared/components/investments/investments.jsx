@@ -23,7 +23,10 @@ const Investments = ({setActiveItem}) => {
                     <button onClick={GoToProfile}>Перейти к профилю</button>
                 </div>
                 <div className='investments__header__check'>
-
+                    <div className='investments__header__check__desc'>
+                        <p>90 000 000,00 ₽ <span>Доступно</span></p>
+                        <p>0,00 ₽ <span>В резерве</span></p>
+                    </div>
                     <div className='investments__header__check__buttons'>
                         <button>Пополнить</button>
                         <button>Вывести</button>
