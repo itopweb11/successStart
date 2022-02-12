@@ -13,7 +13,10 @@ const ProjectFeed = () => {
             </div>
             <div>
                 <p>Лента проектов</p>
-
+                <div>
+                    <span>Сбор инвестиций</span>
+                    <span>Сбор инвестиций завершен</span>
+                </div>
             </div>
         </div>
     )
