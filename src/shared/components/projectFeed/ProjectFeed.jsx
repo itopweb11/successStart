@@ -1,4 +1,6 @@
 import ProjectList from "./projectList/projectList";
+import ProjectCompleted from "./projectCompleted/projectCompleted";
+import {Label} from "reactstrap";
 
 const ProjectFeed = () => {
 
@@ -6,7 +8,9 @@ const ProjectFeed = () => {
         <div className='projectFeed'>
             <div className='projectFeed__addProject'>
                 <div>
-                    <div></div>
+                    <div>
+                        <Label/>
+                    </div>
                     <p>Создайте свой инвестиционный проект и привлеките средства для вашего бизнеса.</p>
                 </div>
                 <button>
@@ -21,6 +25,7 @@ const ProjectFeed = () => {
                 </div>
             </div>
             <ProjectList />
+            <ProjectCompleted />
         </div>
     )
 }
