@@ -8,9 +8,7 @@ const ProjectFeed = () => {
         <div className='projectFeed'>
             <div className='projectFeed__addProject'>
                 <div>
-                    <div>
-                        <Label/>
-                    </div>
+                    <div></div>
                     <p>Создайте свой инвестиционный проект и привлеките средства для вашего бизнеса.</p>
                 </div>
                 <button>
