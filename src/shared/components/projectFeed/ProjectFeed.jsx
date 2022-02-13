@@ -1,3 +1,5 @@
+import ProjectList from "./projectList/projectList";
+
 const ProjectFeed = () => {
 
     return (
@@ -18,6 +20,7 @@ const ProjectFeed = () => {
                     <span>Сбор инвестиций завершен</span>
                 </div>
             </div>
+            <ProjectList />
         </div>
     )
 }
