@@ -18,7 +18,15 @@
       font-weight: 500;
     }
 
+    &__desc {
+      display: flex;
+      align-items: center;
 
+      svg {
+        color: #3a40ff;
+        margin-right: 30px;
+        font-size: 40px;
+      }
     }
   }
 }
