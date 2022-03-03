@@ -1,8 +1,12 @@
 import ProjectList from "./projectList/projectList";
 import ProjectCompleted from "./projectCompleted/projectCompleted";
 import PlusSquare from "../../img/svg/plusSquare";
+import Collection from "../investments/collection/collection";
+import CollectionCompleted from "../investments/collectionCompleted/collectionCompleted";
+import React, {useState} from "react";
 
 const ProjectFeed = () => {
+    const[investments, setInvestments] = useState(true)
 
     return (
         <div className='projectFeed'>
@@ -15,15 +19,22 @@ const ProjectFeed = () => {
                     <span>Добавить проект</span>
                 </button>
             </div>
-            <div>
-                <p>Лента проектов</p>
-                <div>
-                    <span>Сбор инвестиций</span>
-                    <span>Сбор инвестиций завершен</span>
-                </div>
+            <div className='investments__content'>
+                <p className='investments__content__title'>Лента проектов</p>
+                <span
+                    className={investments ? 'itemActive' : ''}
+                    onClick={() => setInvestments(true)}
+                >
+                    Сбор инвестиций
+                </span>
+                <span
+                    className={!investments ? 'itemActive' : ''}
+                    onClick={() => setInvestments(false)}
+                >
+                    Сбор инвестиций завершен
+                </span>
+                {investments ? <Collection /> : <CollectionCompleted />}
             </div>
-            <ProjectList />
-            <ProjectCompleted />
         </div>
     )
 }
