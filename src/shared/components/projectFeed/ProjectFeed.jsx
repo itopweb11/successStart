@@ -31,7 +31,7 @@ const ProjectFeed = () => {
                     className={!investments ? 'itemActive' : ''}
                     onClick={() => setInvestments(false)}
                 >
-                    Сбор инвестиций завершен
+
                 </span>
                 {investments ? <Collection /> : <CollectionCompleted />}
             </div>
